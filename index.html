@@ -5,23 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Wine Radio: Listen Online</title>
 
-    <!-- Подключаем стили Plyr -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
 
-    <!-- Стили для страницы -->
     <style>
-        /* Общие стили */
         body {
             font-family: Arial, sans-serif;
-            background-color: #2D0922; /* Фон страницы в цвет логотипа */
-            color: #FFFFFF; /* Белый цвет текста */
+            background-color: #2D0922;
+            color: #FFFFFF;
             text-align: center;
             padding: 50px;
         }
 
         h1 {
             font-size: 2.5em;
-            color: #FFFFFF; /* Белый заголовок */
+            color: #FFFFFF;
         }
 
         .container {
@@ -29,7 +26,6 @@
             margin: 0 auto;
         }
 
-        /* Стили для контейнера плеера */
         .player-container {
             display: flex;
             flex-direction: column;
@@ -38,36 +34,31 @@
             margin-top: 30px;
         }
 
-        /* Стили для логотипа */
-        .player-logo img {
+        .track-cover {
             width: 200px;
-            height: auto;
-            border-radius: 10px; /* Скругленные углы */
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        /* Кастомизация плеера Plyr */
         .plyr--audio .plyr__controls {
-            background-color: #421840; /* Темный фиолетовый цвет кнопок */
+            background-color: #421840;
         }
 
         .plyr--audio .plyr__control {
-            color: #FFFFFF; /* Белый цвет кнопок */
+            color: #FFFFFF;
         }
 
-        .plyr--audio .plyr__progress input {
-            color: #8D2E8D; /* Цвет прогресса */
-        }
-
+        .plyr--audio .plyr__progress input,
         .plyr--audio .plyr__volume input {
-            color: #8D2E8D; /* Цвет полосы громкости */
+            color: #8D2E8D;
         }
 
         .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control:focus {
-            background-color: #8D2E8D; /* Цвет кнопок при наведении */
+            background-color: #8D2E8D;
         }
 
-        /* Аудиоплеер */
         audio {
             width: 100%;
             max-width: 500px;
@@ -79,14 +70,9 @@
         <h1>Red Wine Radio</h1>
         <p>Relax and Easy Listening from Georgia</p>
 
-        <!-- Контейнер для логотипа и плеера -->
         <div class="player-container">
-            <!-- Логотип -->
-            <div class="player-logo">
-                <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
-            </div>
+            <img id="coverImage" class="track-cover" src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
 
-            <!-- Аудиоплеер Plyr -->
             <audio id="player" controls>
                 <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
                 Your browser does not support the audio element.
@@ -94,15 +80,25 @@
         </div>
     </div>
 
-    <!-- Подключаем JS Plyr -->
     <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
-
-    <!-- Инициализация плеера Plyr -->
     <script>
         const player = new Plyr('#player');
+
+        // Пример получения метаданных с сервера вещания
+        fetch('http://yourstream.com:8000/status-json.xsl')
+            .then(response => response.json())
+            .then(data => {
+                // Обработка данных
+                const coverUrl = data.icestats.source.metadata.cover; // Обложка трека
+                if (coverUrl) {
+                    document.getElementById('coverImage').src = coverUrl;
+                } else {
+                    document.getElementById('coverImage').src = 'https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg';
+                }
+            })
+            .catch(error => console.error('Ошибка при получении метаданных:', error));
     </script>
 
-    <!-- Telegram скрипт для кнопки обратной связи Replain -->
     <script>
         window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
         (function(u){
