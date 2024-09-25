@@ -28,27 +28,30 @@
             margin: 0 auto;
         }
 
+        /* Стили для контейнера плеера */
         .player-container {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         /* Стили для логотипа */
-        .player-logo {
-            margin-bottom: 20px;
-        }
-
         .player-logo img {
-            width: 150px;
+            width: 100px;
             height: auto;
+            border-radius: 10px; /* Скругленные углы */
         }
 
         /* Стили для плеера */
+        .plyr {
+            width: 100%;
+            max-width: 500px;
+        }
+
         audio {
             width: 100%;
-            max-width: 575px;
         }
     </style>
 </head>
