@@ -7,7 +7,7 @@
 
     <!-- Подключаем стили Plyr -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
-    
+
     <!-- Стили для страницы -->
     <style>
         body {
@@ -17,13 +17,38 @@
             text-align: center;
             padding: 50px;
         }
+
         h1 {
             font-size: 2.5em;
             color: #b22222;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
+        }
+
+        .player-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Стили для логотипа */
+        .player-logo {
+            margin-bottom: 20px;
+        }
+
+        .player-logo img {
+            width: 150px;
+            height: auto;
+        }
+
+        /* Стили для плеера */
+        audio {
+            width: 100%;
+            max-width: 575px;
         }
     </style>
 </head>
@@ -32,11 +57,19 @@
         <h1>Red Wine Radio</h1>
         <p>Relax and Easy Listening from Georgia</p>
 
-        <!-- Аудиоплеер Plyr -->
-        <audio id="player" controls>
-            <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <!-- Контейнер для логотипа и плеера -->
+        <div class="player-container">
+            <!-- Логотип -->
+            <div class="player-logo">
+                <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
+            </div>
+
+            <!-- Аудиоплеер Plyr -->
+            <audio id="player" controls>
+                <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
     </div>
 
     <!-- Подключаем JS Plyr -->
@@ -51,10 +84,10 @@
     <script>
         window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
         (function(u){
-            var s = document.createElement('script');
-            s.type = 'text/javascript'; s.async = true; s.src = u;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
+            var s=document.createElement('script');
+            s.type='text/javascript'; s.async=true; s.src=u;
+            var x=document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s,x);
         })('https://widget.replain.cc/dist/client.js');
     </script>
 </body>
