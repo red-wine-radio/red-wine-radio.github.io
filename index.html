@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Red Wine Radio: Listen Online</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Wine Radio: Listen Online</title>
+
+    <!-- Подключаем стили Plyr -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    
+    <!-- Стили для страницы -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #b22222;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
-  <div class="container text-center my-5">
-    <h1>Red Wine Radio</h1>
-    <p>Relax and Easy Listening from Georgia</p>
+    <div class="container">
+        <h1>Red Wine Radio</h1>
+        <p>Relax and Easy Listening from Georgia</p>
 
-    <!-- Встраиваемый виджет Zeno -->
-    <iframe src="https://zeno.fm/player/red-wine-radio" width="575" height="250" frameborder="0" scrolling="no"></iframe>
-  </div>
+        <!-- Аудиоплеер Plyr -->
+        <audio id="player" controls>
+            <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
 
-  <!-- Код для кнопки обратной связи через Replain -->
-  <script>
-    window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
-    (function(u){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=u;
-    var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
-    })('https://widget.replain.cc/dist/client.js');
-  </script>
+    <!-- Подключаем JS Plyr -->
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Инициализация плеера Plyr -->
+    <script>
+        const player = new Plyr('#player');
+    </script>
+
+    <!-- Telegram скрипт для кнопки обратной связи Replain -->
+    <script>
+        window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
+        (function(u){
+            var s = document.createElement('script');
+            s.type = 'text/javascript'; s.async = true; s.src = u;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })('https://widget.replain.cc/dist/client.js');
+    </script>
 </body>
 </html>
