@@ -92,9 +92,9 @@
                 <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
             </div>
 
-            <!-- Аудиоплеер Plyr -->
+            <!-- Аудиоплеер Plyr с использованием .m3u -->
             <audio id="player" controls>
-                <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
+                <source src="https://stream.zeno.fm/pcbduafehg0uv.m3u" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
 
@@ -124,7 +124,7 @@
 
         // Функция для получения метаданных трека
         function fetchTrackInfo() {
-            // Пример запроса к серверу с метаданными (должен быть настроен сервер, который отдает метаданные)
+            // Пример запроса к серверу с метаданными (замените на ваш реальный URL)
             fetch('https://stream.zeno.fm/pcbduafehg0uv/status-json.xsl')
                 .then(response => response.json())
                 .then(data => {
