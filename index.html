@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Wine Radio: Listen Online</title>
 
-    <!-- Подключаем стили Plyr -->
+    <!-- Подключаем стили Plyr для возможности кастомизации, если в будущем захотите вернуть Plyr -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
 
     <!-- Стили для страницы -->
@@ -45,38 +45,10 @@
             margin-bottom: 20px;
         }
 
-        /* Название трека и исполнителя */
-        .track-info {
+        /* iFrame плеера Zeno.fm */
+        iframe {
+            border: none;
             margin-top: 20px;
-            font-size: 1.2em;
-            color: #FFFFFF;
-        }
-
-        /* Кастомизация плеера Plyr */
-        .plyr--audio .plyr__controls {
-            background-color: #421840; /* Темный фиолетовый цвет кнопок */
-        }
-
-        .plyr--audio .plyr__control {
-            color: #FFFFFF; /* Белый цвет кнопок */
-        }
-
-        .plyr--audio .plyr__progress input {
-            color: #8D2E8D; /* Цвет прогресса */
-        }
-
-        .plyr--audio .plyr__volume input {
-            color: #8D2E8D; /* Цвет полосы громкости */
-        }
-
-        .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control:focus {
-            background-color: #8D2E8D; /* Цвет кнопок при наведении */
-        }
-
-        /* Аудиоплеер */
-        audio {
-            width: 100%;
-            max-width: 500px;
         }
     </style>
 </head>
@@ -92,52 +64,10 @@
                 <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
             </div>
 
-            <!-- Аудиоплеер Plyr -->
-            <audio id="player" controls>
-                <source src="https://stream.zeno.fm/pcbduafehg0uv" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-
-            <!-- Блок для отображения названия трека и исполнителя -->
-            <div class="track-info">
-                <span id="trackTitle">Loading...</span>
-            </div>
+            <!-- Встраиваем плеер Zeno.fm с отображением названия треков и исполнителя -->
+            <iframe frameborder="0" width="280" height="216" src="https://xg10kafehg0uv.pl.zeno.fm/embed/player?stream=auto&title=Now Playing"></iframe>
         </div>
     </div>
-
-    <!-- Подключаем JS Plyr -->
-    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
-
-    <!-- Инициализация плеера Plyr -->
-    <script>
-        const player = new Plyr('#player');
-
-        // Пример простого обновления названия трека
-        function updateTrackInfo(title) {
-            const trackTitle = document.getElementById('trackTitle');
-            trackTitle.textContent = title || "Unknown Track";
-        }
-
-        // Эмуляция получения названия трека
-        // В реальной ситуации нужно получать метаданные с сервера
-        function fetchTrackInfo() {
-            // Здесь можно запросить данные с вашего сервера
-            fetch('https://stream.zeno.fm/pcbduafehg0uv/status-json.xsl')
-                .then(response => response.json())
-                .then(data => {
-                    // Предполагается, что метаданные трека приходят в ответе
-                    const trackTitle = data.currenttrack || 'Unknown Track'; // Пример ключа данных
-                    updateTrackInfo(trackTitle);
-                })
-                .catch(error => {
-                    console.error('Error fetching track info:', error);
-                    updateTrackInfo(null);
-                });
-        }
-
-        // Пример периодического обновления информации о треке
-        setInterval(fetchTrackInfo, 5000); // Обновляем каждые 5 секунд
-    </script>
 
     <!-- Telegram скрипт для кнопки обратной связи Replain -->
     <script>
