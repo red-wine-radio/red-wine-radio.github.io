@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Wine Radio: Listen Online</title>
+    <title>Red Wine Radio</title>
 
-    <!-- Подключаем стили AzuraCast Player -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@azuracast/player@0.2.2/dist/azuraplayer.min.css">
+    <!-- Подключаем стили MediaElement.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.16/build/mediaelementplayer.min.css" />
 
     <!-- Стили для страницы -->
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #2D0922; /* Фон страницы в цвет логотипа */
-            color: #FFFFFF; /* Белый цвет текста */
+            background-color: #2D0922;
+            color: #FFFFFF;
             text-align: center;
             padding: 50px;
         }
@@ -40,6 +40,11 @@
             font-size: 1.2em;
             color: #FFFFFF;
         }
+
+        .mejs-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -52,15 +57,11 @@
             <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
         </div>
 
-        <!-- AzuraCast плеер -->
-        <azuraplayer 
-            style="width: 100%; max-width: 600px;"
-            autoplay="true" 
-            theme="dark"
-            src="https://stream.zeno.fm/pcbduafehg0uv" 
-            server-url="https://your-icecast-or-shoutcast-server.com"
-            title="Red Wine Radio">
-        </azuraplayer>
+        <!-- MediaElement плеер -->
+        <audio id="player" controls>
+            <source src="https://stream.zeno.fm/pcbduafehg0uv.m3u" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
 
         <!-- Блок для отображения названия трека и исполнителя -->
         <div class="track-info">
@@ -68,8 +69,8 @@
         </div>
     </div>
 
-    <!-- Подключаем JS AzuraCast Player -->
-    <script src="https://cdn.jsdelivr.net/npm/@azuracast/player@0.2.2/dist/azuraplayer.min.js"></script>
+    <!-- Подключаем JS MediaElement.js -->
+    <script src="https://cdn.jsdelivr.net/npm/mediaelement@4.2.16/build/mediaelement-and-player.min.js"></script>
 
     <!-- Telegram скрипт для кнопки обратной связи Replain -->
     <script>
@@ -82,13 +83,28 @@
         })('https://widget.replain.cc/dist/client.js');
     </script>
 
-    <!-- Функция для обновления названия трека -->
+    <!-- Инициализация MediaElement плеера -->
     <script>
-        const player = document.querySelector('azuraplayer');
-        player.addEventListener('metadata', (event) => {
-            const { artist, title } = event.detail;
-            document.getElementById('trackTitle').textContent = `${artist} - ${title}`;
-        });
+        const player = new MediaElementPlayer('player');
+
+        // Функция для обновления информации о треке
+        function fetchTrackInfo() {
+            // Здесь нужно запросить данные с вашего сервера
+            fetch('https://stream.zeno.fm/pcbduafehg0uv/status-json.xsl')
+                .then(response => response.json())
+                .then(data => {
+                    // Предположим, что название трека и исполнитель приходят в JSON формате
+                    const title = data.icestats.source.title || "Unknown Title";
+                    const artist = data.icestats.source.artist || "Unknown Artist";
+                    document.getElementById('trackTitle').textContent = `${artist} - ${title}`;
+                })
+                .catch(error => {
+                    console.error('Ошибка получения метаданных:', error);
+                });
+        }
+
+        // Периодическое обновление информации о треке
+        setInterval(fetchTrackInfo, 10000); // Обновляем каждые 10 секунд
     </script>
 </body>
 </html>
