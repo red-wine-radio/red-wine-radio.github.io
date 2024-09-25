@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Wine Radio: Listen Online</title>
 
-    <!-- Подключаем стили Plyr -->
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css" />
+    <!-- Подключаем стили AzuraCast Player -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@azuracast/player@0.2.2/dist/azuraplayer.min.css">
 
     <!-- Стили для страницы -->
     <style>
@@ -20,7 +20,7 @@
 
         h1 {
             font-size: 2.5em;
-            color: #FFFFFF; /* Белый заголовок */
+            color: #FFFFFF;
         }
 
         .container {
@@ -28,55 +28,17 @@
             margin: 0 auto;
         }
 
-        /* Стили для контейнера плеера */
-        .player-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        /* Стили для логотипа */
         .player-logo img {
             width: 200px;
             height: auto;
-            border-radius: 10px; /* Скругленные углы */
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        /* Название трека и исполнителя */
         .track-info {
             margin-top: 20px;
             font-size: 1.2em;
             color: #FFFFFF;
-        }
-
-        /* Кастомизация плеера Plyr */
-        .plyr--audio .plyr__controls {
-            background-color: #421840; /* Темный фиолетовый цвет кнопок */
-        }
-
-        .plyr--audio .plyr__control {
-            color: #FFFFFF; /* Белый цвет кнопок */
-        }
-
-        .plyr--audio .plyr__progress input {
-            color: #8D2E8D; /* Цвет прогресса */
-        }
-
-        .plyr--audio .plyr__volume input {
-            color: #8D2E8D; /* Цвет полосы громкости */
-        }
-
-        .plyr--audio .plyr__control:hover, .plyr--audio .plyr__control:focus {
-            background-color: #8D2E8D; /* Цвет кнопок при наведении */
-        }
-
-        /* Аудиоплеер */
-        audio {
-            width: 100%;
-            max-width: 500px;
         }
     </style>
 </head>
@@ -85,64 +47,29 @@
         <h1>Red Wine Radio</h1>
         <p>Relax and Easy Listening from Georgia</p>
 
-        <!-- Контейнер для логотипа и плеера -->
-        <div class="player-container">
-            <!-- Логотип -->
-            <div class="player-logo">
-                <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
-            </div>
+        <!-- Логотип -->
+        <div class="player-logo">
+            <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
+        </div>
 
-            <!-- Аудиоплеер Plyr с использованием .m3u -->
-            <audio id="player" controls>
-                <source src="https://stream.zeno.fm/pcbduafehg0uv.m3u" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+        <!-- AzuraCast плеер -->
+        <azuraplayer 
+            style="width: 100%; max-width: 600px;"
+            autoplay="true" 
+            theme="dark"
+            src="https://stream.zeno.fm/pcbduafehg0uv" 
+            server-url="https://your-icecast-or-shoutcast-server.com"
+            title="Red Wine Radio">
+        </azuraplayer>
 
-            <!-- Блок для отображения названия трека и исполнителя -->
-            <div class="track-info">
-                <span id="trackTitle">Loading track info...</span>
-            </div>
+        <!-- Блок для отображения названия трека и исполнителя -->
+        <div class="track-info">
+            <span id="trackTitle">Loading track info...</span>
         </div>
     </div>
 
-    <!-- Подключаем JS Plyr -->
-    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script>
-
-    <!-- Инициализация плеера Plyr -->
-    <script>
-        const player = new Plyr('#player');
-
-        // Функция обновления названия трека и исполнителя
-        function updateTrackInfo(title, artist) {
-            const trackTitle = document.getElementById('trackTitle');
-            if (title && artist) {
-                trackTitle.textContent = `${title} - ${artist}`;
-            } else {
-                trackTitle.textContent = "Track info not available";
-            }
-        }
-
-        // Функция для получения метаданных трека
-        function fetchTrackInfo() {
-            // Пример запроса к серверу с метаданными (замените на ваш реальный URL)
-            fetch('https://stream.zeno.fm/pcbduafehg0uv/status-json.xsl')
-                .then(response => response.json())
-                .then(data => {
-                    // Здесь нужно обработать JSON-ответ и извлечь название трека и исполнителя
-                    // Пример структуры может отличаться в зависимости от сервера, замените на свои ключи
-                    const title = data.icestats.source.title || "Unknown Title";
-                    const artist = data.icestats.source.artist || "Unknown Artist";
-                    updateTrackInfo(title, artist);
-                })
-                .catch(error => {
-                    console.error('Error fetching track info:', error);
-                    updateTrackInfo(null, null);
-                });
-        }
-
-        // Периодическое обновление треков каждые 10 секунд
-        setInterval(fetchTrackInfo, 10000); // Обновляем каждые 10 секунд
-    </script>
+    <!-- Подключаем JS AzuraCast Player -->
+    <script src="https://cdn.jsdelivr.net/npm/@azuracast/player@0.2.2/dist/azuraplayer.min.js"></script>
 
     <!-- Telegram скрипт для кнопки обратной связи Replain -->
     <script>
@@ -153,6 +80,15 @@
             var x=document.getElementsByTagName('script')[0];
             x.parentNode.insertBefore(s,x);
         })('https://widget.replain.cc/dist/client.js');
+    </script>
+
+    <!-- Функция для обновления названия трека -->
+    <script>
+        const player = document.querySelector('azuraplayer');
+        player.addEventListener('metadata', (event) => {
+            const { artist, title } = event.detail;
+            document.getElementById('trackTitle').textContent = `${artist} - ${title}`;
+        });
     </script>
 </body>
 </html>
