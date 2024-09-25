@@ -1,12 +1,12 @@
 
 
-const RADIO_NAME = 'Game! Radio 1';
+const RADIO_NAME = 'RED WINE RADIO';
 
 // SELECT ARTWORK PROVIDER, ITUNES, DEEZER & SPOTIFY  eg : spotify 
 var API_SERVICE = 'deezer';
 
 // Change Stream URL Here, Supports, ICECAST, ZENO, SHOUTCAST, RADIOJAR ETC.... DOES NOT SUPPORT HLS
-const URL_STREAMING = 'https://stream-51.zeno.fm/cfhkm5fs1uhvv?zs=HOu6hxV1SG-7iGi9WGVTqQ';
+const URL_STREAMING = 'https://stream.zeno.fm/pcbduafehg0uv';
 
 //NOW PLAYING API.
 const API_URL = 'https://api-v2.streamafrica.net/icyv2?url=' + URL_STREAMING;
