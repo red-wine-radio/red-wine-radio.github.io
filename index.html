@@ -7,7 +7,7 @@
 
     <!-- Подключаем Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style1.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
 
                 <div class="player-controls mt-4">
                     <button class="btn btn-primary btn-lg mr-3" id="play-btn">Play</button>
-                    <button class="btn btn-secondary btn-lg" id="pause-btn">Pause</button>
+                    <button class="btn btn-secondary btn-lg" id="pause-btn">Stop</button>
                 </div>
 
                 <div class="volume-control mt-4">
@@ -35,7 +35,7 @@
 
                 <!-- Ссылки для внешних плееров -->
                 <div class="external-links mt-4">
-                    <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download class="btn btn-outline-light">Save Stream (M3U)</a>
+                    <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download class="btn btn-outline-light">Save (M3U)</a>
                     <a href="vlc://https://stream.zeno.fm/pcbduafehg0uv" class="btn btn-outline-light">Open in VLC</a>
                 </div>
             </div>
@@ -46,6 +46,7 @@
     <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv" preload="auto"></audio>
 
     <!-- Скрипты Bootstrap и зависимости -->
+    <script src="js/telegram.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
