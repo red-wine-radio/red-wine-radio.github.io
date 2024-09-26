@@ -14,7 +14,7 @@ body {
     max-width: 900px;
     background-color: #652A6A;
     border-radius: 20px;
-    padding: 20px;
+    padding: 0px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
@@ -60,7 +60,7 @@ body {
 
 .track-info {
     margin-top: 15px;
-    font-size: 18px;
+    font-size: 15px;
     color: #FFFFFF;
     text-align: center;
 }
