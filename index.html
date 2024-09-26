@@ -4,14 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Wine Radio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #652A6A;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .player-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #652A6A;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .player-logo img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .player-controls button {
+            background-color: #FFFFFF;
+            color: #652A6A;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+            font-size: 14px;
+        }
+
+        .volume-control input[type="range"] {
+            width: 100px;
+            margin-left: 10px;
+        }
+
+        .track-info {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #FFFFFF;
+        }
+
+        #audio-player {
+            display: none;
+        }
+
+        .extra-buttons {
+            margin-top: 20px;
+        }
+
+        .extra-buttons a {
+            color: #FFFFFF;
+            text-decoration: none;
+            background-color: #652A6A;
+            border: 1px solid #FFFFFF;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Подключение скрипта плеера -->
-    
-    <!-- MAGICSTREAMS - START EMBEDDED IFRAME HTML5 PLAYER --> 
-    <iframe width="100%" height="320" src="https://radioplayer.link/iframe/index.php?autoplay=play&name=Red Wine Radio&logo=https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg&bgcolor=212121&textcolor=FFFFFF&v=2&stream=https://stream.zeno.fm/pcbduafehg0uv" frameborder="0" scrolling="no" style="border-radius: 8px;" allow="autoplay;"></iframe> 
-    <!-- MAGICSTREAMS - END EMBEDDED IFRAME HTML5 PLAYER -->
+    <div class="player-container">
+        <div class="player-logo">
+            <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
+        </div>
+
+        <h2>Red Wine Radio</h2>
+
+        <div class="track-info">
+            <p id="track-info">Now playing...</p>
+        </div>
+
+        <div class="player-controls">
+            <button id="play-btn">Play</button>
+            <button id="pause-btn">Pause</button>
+        </div>
+
+        <div class="volume-control">
+            <label for="volume">Volume</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+        </div>
+
+        <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv" preload="auto"></audio>
+
+        <!-- Кнопки для сохранения и открытия потока -->
+        <div class="extra-buttons">
+            <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download>Save Stream (M3U)</a>
+            <a href="vlc://https://stream.zeno.fm/pcbduafehg0uv">Open in VLC</a>
+        </div>
+    </div>
+
+    <!-- Скрипт для Telegram -->
+    <script>
+        window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
+        (function(u){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=u;
+        var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
+        })('https://widget.replain.cc/dist/client.js');
+    </script>
+
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playBtn = document.getElementById('play-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const volumeControl = document.getElementById('volume');
+        const trackInfo = document.getElementById('track-info');
+
+        // Play and Pause buttons
+        playBtn.addEventListener('click', () => {
+            audioPlayer.play();
+            trackInfo.textContent = "Playing Red Wine Radio...";
+        });
+
+        pauseBtn.addEventListener('click', () => {
+            audioPlayer.pause();
+            trackInfo.textContent = "Paused";
+        });
+
+        // Volume control
+        volumeControl.addEventListener('input', function() {
+            audioPlayer.volume = this.value;
+        });
+
+        // Auto play (remove this if you don't want autoplay)
+        audioPlayer.autoplay = false;
+    </script>
 
 </body>
 </html>
