@@ -18,16 +18,16 @@
 
         .player-container {
             width: 100%;
-            max-width: 600px;
+            max-width: 900px;
             background-color: #652A6A;
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
         .player-logo img {
-            width: 150px;
+            width: 120px;
             height: auto;
             margin-bottom: 15px;
             border-radius: 8px;
@@ -40,15 +40,16 @@
             margin-top: 15px;
         }
 
-        .player-controls button {
-            background-color: #FFFFFF;
-            color: #652A6A;
+        .play-pause-btn {
+            background-color: transparent;
             border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
             cursor: pointer;
-            margin: 0 10px;
+            outline: none;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
         }
 
         .volume-control {
@@ -56,10 +57,11 @@
             align-items: center;
             color: #FFFFFF;
             font-size: 14px;
+            margin-left: 20px;
         }
 
         .volume-control input[type="range"] {
-            width: 100px;
+            width: 200px;
             margin-left: 10px;
         }
 
@@ -67,92 +69,111 @@
             margin-top: 15px;
             font-size: 18px;
             color: #FFFFFF;
+            text-align: center;
+        }
+
+        .external-links {
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .external-links img {
+            width: 30px;
+            height: auto;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+
+        .player-background {
+            background-color: #4B2456;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .player-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: -1;
         }
 
         #audio-player {
             display: none;
         }
 
-        .extra-buttons {
-            margin-top: 20px;
-        }
-
-        .extra-buttons a {
-            color: #FFFFFF;
-            text-decoration: none;
-            background-color: #652A6A;
-            border: 1px solid #FFFFFF;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
     </style>
 </head>
 <body>
 
     <div class="player-container">
-        <div class="player-logo">
-            <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
-        </div>
+        <div class="player-background">
+            <div class="player-logo">
+                <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo">
+            </div>
 
-        <h2>Red Wine Radio</h2>
+            <h2>Red Wine Radio</h2>
 
-        <div class="track-info">
-            <p id="track-info">Now playing...</p>
-        </div>
+            <div class="track-info">
+                <p id="track-info">Playing Red Wine Radio 00:00</p>
+            </div>
 
-        <div class="player-controls">
-            <button id="play-btn">Play</button>
-            <button id="pause-btn">Pause</button>
-        </div>
+            <div class="player-controls">
+                <button class="play-pause-btn" id="play-btn">
+                    <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/play-icon.png" alt="Play" class="play-icon">
+                </button>
 
-        <div class="volume-control">
-            <label for="volume">Volume</label>
-            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+                <div class="volume-control">
+                    <label for="volume">Volume</label>
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8">
+                </div>
+            </div>
+
+            <div class="external-links">
+                <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download><img src="https://img.icons8.com/material-outlined/24/ffffff/download.png" alt="Download"></a>
+                <a href="vlc://https://stream.zeno.fm/pcbduafehg0uv"><img src="https://img.icons8.com/color/48/000000/vlc.png" alt="Open in VLC"></a>
+                <a href="https://tunein.com/radio/Red-Wine-Radio-s315646/"><img src="https://img.icons8.com/color/48/000000/tunein.png" alt="TuneIn"></a>
+            </div>
         </div>
 
         <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv" preload="auto"></audio>
-
-        <!-- Кнопки для сохранения и открытия потока -->
-        <div class="extra-buttons">
-            <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download>Save Stream (M3U)</a>
-            <a href="vlc://https://stream.zeno.fm/pcbduafehg0uv">Open in VLC</a>
-        </div>
     </div>
-
-    <!-- Скрипт для Telegram -->
-    <script>
-        window.replainSettings = { id: 'f0a20e49-8b59-4592-bc9c-83b08d4baed3' };
-        (function(u){var s=document.createElement('script');s.type='text/javascript';s.async=true;s.src=u;
-        var x=document.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);
-        })('https://widget.replain.cc/dist/client.js');
-    </script>
 
     <script>
         const audioPlayer = document.getElementById('audio-player');
         const playBtn = document.getElementById('play-btn');
-        const pauseBtn = document.getElementById('pause-btn');
         const volumeControl = document.getElementById('volume');
         const trackInfo = document.getElementById('track-info');
+        let isPlaying = false;
 
-        // Play and Pause buttons
+        // Toggle Play/Pause
         playBtn.addEventListener('click', () => {
-            audioPlayer.play();
-            trackInfo.textContent = "Playing Red Wine Radio...";
-        });
-
-        pauseBtn.addEventListener('click', () => {
-            audioPlayer.pause();
-            trackInfo.textContent = "Paused";
+            if (!isPlaying) {
+                audioPlayer.play();
+                playBtn.innerHTML = '<img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/pause-icon.png" alt="Pause" class="play-icon">';
+                trackInfo.textContent = 'Playing Red Wine Radio...';
+                isPlaying = true;
+            } else {
+                audioPlayer.pause();
+                playBtn.innerHTML = '<img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/play-icon.png" alt="Play" class="play-icon">';
+                trackInfo.textContent = 'Paused';
+                isPlaying = false;
+            }
         });
 
         // Volume control
-        volumeControl.addEventListener('input', function() {
+        volumeControl.addEventListener('input', function () {
             audioPlayer.volume = this.value;
         });
 
-        // Auto play (remove this if you don't want autoplay)
+        // Auto play (set to false by default)
         audioPlayer.autoplay = false;
+
     </script>
 
 </body>
