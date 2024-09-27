@@ -1,83 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red Wine Radio</title>
+    <title>Red Wine Radio Player</title>
 
-    <!-- Подключаем Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Подключение внешнего CSS файла -->
 </head>
+
 <body>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 text-center">
-                <div class="player-logo mt-5">
-                    <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo" class="img-fluid rounded-circle" style="max-width: 150px;">
-                </div>
-                <h1 class="mt-4">Red Wine Radio</h1>
-
-                <div class="player-controls mt-4">
-                    <button class="btn btn-primary btn-lg mr-3" id="play-btn">Play</button>
-                    <button class="btn btn-secondary btn-lg" id="pause-btn">Stop</button>
-                </div>
-
+    <div class="player-container">
+        <!-- Логотип уже настроен и находится в player-container -->
+        <div class="album-cover">
+            <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo" class="logo-overlay">
+        </div>
+    
+        <!-- Основной контейнер для левой и правой части -->
+        <div class="player-content">
+            <!-- Левая часть: Название станции, Онлайн Live Stream, громкость, время -->
+            <div class="left-section">
+                <h1>Red Wine Radio</h1>
+                <p>Online Live Stream</p>
+    
+                <!-- Контрол громкости -->
                 <div class="volume-control mt-4">
-                    <label for="volume">Volume</label>
-                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8" class="form-control-range" style="width: 200px; display: inline;">
+                    <i class="fa fa-volume-up"></i> <!-- Иконка громкости -->
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8" class="form-control-range">
                 </div>
-
-                <div class="track-info mt-4">
-                    <p id="track-info">Playing Red Wine Radio 00:00</p>
+    
+                <!-- Время -->
+                <div class="track-info">
+                    <span id="track-time">Time 00:00</span>
                 </div>
-
-                <!-- Ссылки для внешних плееров -->
-                <div class="external-links mt-4">
-                    <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u" download class="btn btn-outline-light">Save (M3U)</a>
-                    <a href="vlc://https://stream.zeno.fm/pcbduafehg0uv" class="btn btn-outline-light">Open in VLC</a>
+            </div>
+    
+            <!-- Правая часть: Социальные сети, кнопка Play, On Air -->
+            <div class="right-section">
+                <!-- Социальные сети -->
+                <div class="social-icons">
+                    <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
                 </div>
+    
+                <!-- Кнопка Play -->
+                <button class="play-btn" id="play-btn">
+                    <img src="img/play.png" alt="Play" id="play-icon" />
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- Аудио плеер -->
-    <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv" preload="auto"></audio>
+    <!-- Аудиоплеер -->
+    <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv"></audio>
 
-    <!-- Скрипты Bootstrap и зависимости -->
-    <script src="js/telegram.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        const audioPlayer = document.getElementById('audio-player');
-        const playBtn = document.getElementById('play-btn');
-        const pauseBtn = document.getElementById('pause-btn');
-        const volumeControl = document.getElementById('volume');
-        const trackInfo = document.getElementById('track-info');
-        let isPlaying = false;
-
-        // Toggle Play/Pause
-        playBtn.addEventListener('click', () => {
-            if (!isPlaying) {
-                audioPlayer.play();
-                trackInfo.textContent = 'Playing Red Wine Radio...';
-                isPlaying = true;
-            }
-        });
-
-        pauseBtn.addEventListener('click', () => {
-            audioPlayer.pause();
-            trackInfo.textContent = 'Paused';
-            isPlaying = false;
-        });
-
-        // Volume control
-        volumeControl.addEventListener('input', function () {
-            audioPlayer.volume = this.value;
-        });
-    </script>
+    <!-- Подключение скрипта для работы плеера -->
+    <script src="js/script.js"></script>
 </body>
+
 </html>
