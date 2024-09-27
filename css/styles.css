@@ -1,26 +1,22 @@
 body {
     background-color: #D8E1EC; /* Устанавливаем цвет фона для всей страницы */
+    font-size: 150%; /* Увеличиваем все шрифты на 20% */
 }
 
 @font-face {
-    font-family: 'FontAwesome'; /* Имя шрифта, которое вы будете использовать в проекте */
-    src: url('fonts/fontawesome-webfont.eot'); /* Файл eot для IE */
-    src: url('fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/fontawesome-webfont.woff2') format('woff2'),
-         url('fonts/fontawesome-webfont.woff') format('woff'),
-         url('fonts/fontawesome-webfont.ttf') format('truetype'),
-         url('fonts/fontawesome-webfont.svg#FontAwesome') format('svg');
+    font-family: 'Flamenco-Regular'; /* Имя кастомного шрифта */
+    src: url('../fonts/Flamenco-Regular.ttf') format('truetype'); /* Путь к вашему шрифту */
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: 'FontAwesome', sans-serif; /* Применяем шрифт FontAwesome ко всему телу страницы */
+    font-family: 'Flamenco-Regular', sans-serif; /* Используем кастомный шрифт */
 }
 
 /* Пример для иконок или элементов */
 .icon {
-    font-family: 'FontAwesome';
+    font-family: 'fontawesome-webfont';
 }
 
 /* Основной контейнер плеера */
@@ -57,18 +53,16 @@ body {
     color: #333;
 }
 
-.left-section p {
-    font-size: 18px;
-    color: #666;
-}
-
 /* Контрол громкости */
 .volume-control {
-    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end; /* Сдвигает ползунок к правому краю контейнера */
+    align-items: center;
+    gap: 15px;
 }
 
-.volume-control input {
-    width: 150px;
+#volume-slider {
+    width: 200px; /* Задайте ширину ползунка */
 }
 
 /* Время */
@@ -83,33 +77,9 @@ body {
     display: flex;
     flex-direction: column; /* Вертикальная колонка */
     justify-content: space-between; /* Отдельные элементы */
-    align-items: flex-start; /* Выравнивание по левому краю */
-    height: 100%; /* Убедитесь, что контейнер занимает всю высоту */
+    /* align-items: flex-start; /Выравнивание по левому краю */
+    height: 90%; /* Убедитесь, что контейнер занимает всю высоту */
 }
-
-/* Иконки соцсетей */
-.social-icons {
-    display: flex;
-    flex-direction: column; /* Расположение иконок в колонку */
-    align-items: center; /* Центрирование иконок горизонтально */
-    margin-top: 0; /* Убираем любые отступы сверху */
-}
-
-/* Стили для самих иконок */
-.social-icons a {
-    margin-bottom: 10px; /* Добавляем отступы между иконками */
-}
-
-/* Убираем отступ у последней иконки */
-.social-icons a:last-child {
-    margin-bottom: 0;
-}
-
-.social-icons img {
-    width: 30px;
-    height: 30px;
-}
-
 
 /* Логотип наложенный сверху */
 .logo-overlay {
@@ -142,12 +112,14 @@ body {
     cursor: pointer;
 }
 
+/* Кнопка воспроизведения */
 .image-container {
-    width: 70px;  /* Ширина контейнера */
-    height: 70px; /* Высота контейнера */
+    width: 90px;  /* Ширина контейнера */
+    height: 90px; /* Высота контейнера */
     border-radius: 50%; /* Делаем контейнер круглым */
     overflow: hidden; /* Скрываем лишние части изображения, чтобы они не выходили за границы */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);  /* Добавляем тень вокруг круга */
+    margin-left: 0px;
 }
 
 .image-container img {
@@ -155,19 +127,6 @@ body {
     height: 100%; /* Сохраняет пропорции */
 }
 
-/* .play-btn img {
-    width: 100px;  /* Ширина изображения кнопки */
-    /* height: auto; Высота будет автоматически пропорциональна ширине */
-    /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);  */ */
-
-/* Громкость */
-.volume-control {
-    margin-top: 15px;
-}
-
-.volume-control input {
-    width: 200px;
-}
 
 /* Информация о треке */
 .track-info {
@@ -185,6 +144,7 @@ body {
 /* Социальные иконки */
 .social-icons {
     display: flex;
+    flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
     margin-top: 20px;
 }
@@ -195,8 +155,8 @@ body {
 }
 
 .social-icons img {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     transition: transform 0.3s ease;
 }
 

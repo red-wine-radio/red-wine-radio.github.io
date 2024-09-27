@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red Wine Radio Player</title>
 
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css"> <!-- Подключение внешнего CSS файла -->
+    <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="css/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -27,12 +29,12 @@
                 <!-- Контрол громкости -->
                 <div class="volume-control mt-4">
                     <i class="fa fa-volume-up"></i> <!-- Иконка громкости -->
-                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.8" class="form-control-range">
+                    <div id="volume-slider" class="mt-4"></div>
                 </div>
     
                 <!-- Время -->
                 <div class="track-info">
-                    <span id="track-time">Time 00:00</span>
+                    <span id="trackTime">Time 00:00</span>
                 </div>
             </div>
     
@@ -40,8 +42,8 @@
             <div class="right-section">
                 <!-- Социальные сети -->
                 <div class="social-icons">
-                    <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="https://www.facebook.com/RedWineOnAir/"><img src="img/facebook.png"  alt="Facebook"></a>
+                    <a href="https://www.instagram.com/redwineradio/"><img src="img/instagram.png" alt="Instagram"></a>
                 </div>
     
                 <!-- Кнопка Play -->
@@ -55,9 +57,10 @@
     </div>
 
     <!-- Аудиоплеер -->
-    <audio id="audio-player" src="https://stream.zeno.fm/pcbduafehg0uv"></audio>
+    <audio id="audio" src="https://stream.zeno.fm/pcbduafehg0uv"></audio>
 
     <!-- Подключение скрипта для работы плеера -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.1/nouislider.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 
