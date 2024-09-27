@@ -49,7 +49,17 @@ body {
 }
 /* Название станции и описание */
 .left-section h1 {
-    font-size: 24px;
+
+    width: 68%; /* Левый контейнер занимает 30% ширины */
+    margin-right: 2%; /* Отступ справа */
+    font-size: 26px;
+    font-weight: bold;
+    color: #333;
+}
+
+.left-section p {
+    font-size: 18px;
+    font-weight: bold;
     color: #333;
 }
 
@@ -74,20 +84,21 @@ body {
 
 /* Контейнер для правой части */
 .right-section {
+    width: 30%;
     display: flex;
     flex-direction: column; /* Вертикальная колонка */
-    justify-content: space-between; /* Отдельные элементы */
-    /* align-items: flex-start; /Выравнивание по левому краю */
-    height: 90%; /* Убедитесь, что контейнер занимает всю высоту */
+    align-items: center;
+    justify-content: space-between; 
+    height: 100%; /* Убедитесь, что контейнер занимает всю высоту */
 }
 
 /* Логотип наложенный сверху */
 .logo-overlay {
     position: absolute;
     top: 40px; /* Сдвиг вверх */
-    left: -30px; /* Сдвиг влево */
-    width: 300px; /* Ширина логотипа */
-    height: 300px;
+    left: -20px; /* Сдвиг влево */
+    width: 310px; /* Ширина логотипа */
+    height: 310px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Тень вокруг логотипа */
     border-radius: 7%; /* Закругленные углы для логотипа */
     z-index: 10; /* Разместить поверх других элементов */
@@ -134,12 +145,6 @@ body {
     color: #333;
 }
 
-.status {
-    display: block;
-    font-weight: bold;
-    color: #28a745;
-    margin-top: 10px;
-}
 
 /* Социальные иконки */
 .social-icons {
@@ -150,8 +155,8 @@ body {
 }
 
 .social-icons a {
-    margin: 0 20px;
-    margin-top: 30px;
+    margin: 0 30px;
+    margin-top: 50px;
 }
 
 .social-icons img {
