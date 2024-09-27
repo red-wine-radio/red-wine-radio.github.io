@@ -136,24 +136,29 @@ body {
 }
 
 .play-btn {
-    border: none; /* Убираем границу */
-    cursor: pointer; /* Оставляем указатель на курсоре */
-    background-color: transparent; /* Убираем фон */
-    padding: 0; /* Убираем любые внутренние отступы */
-}
-
-.play-btn {
     border: none;
-    cursor: pointer;
-    background-color: transparent;
+    background-color: transparent; /* Убираем фон */
     padding: 0;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
-.play-btn img {
+.image-container {
+    width: 70px;  /* Ширина контейнера */
+    height: 70px; /* Высота контейнера */
+    border-radius: 50%; /* Делаем контейнер круглым */
+    overflow: hidden; /* Скрываем лишние части изображения, чтобы они не выходили за границы */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);  /* Добавляем тень вокруг круга */
+}
+
+.image-container img {
+    width: 100%;  /* Изображение полностью заполняет круглый контейнер */
+    height: 100%; /* Сохраняет пропорции */
+}
+
+/* .play-btn img {
     width: 100px;  /* Ширина изображения кнопки */
-    height: auto; /* Высота будет автоматически пропорциональна ширине */
-    /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);  */
+    /* height: auto; Высота будет автоматически пропорциональна ширине */
+    /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6);  */ */
 
 /* Громкость */
 .volume-control {
