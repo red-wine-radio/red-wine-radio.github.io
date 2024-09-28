@@ -47,12 +47,11 @@ body {
     height: 100%; /* Полная высота родительского контейнера */
     margin-top: auto; /* Сдвигает содержимое вниз */
 }
-/* Название станции и описание */
-.left-section h1 {
 
-    width: 68%; /* Левый контейнер занимает 30% ширины */
+.left-section h1 {
+    width: 68%; 
     margin-right: 2%; /* Отступ справа */
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     color: #333;
 }
@@ -69,18 +68,24 @@ body {
     justify-content: flex-end; /* Сдвигает ползунок к правому краю контейнера */
     align-items: center;
     gap: 15px;
+    margin-top: 10px;
+}
+
+.fa-volume-up {
+    transform: scale(0.60);
+    margin-right: 5spx; /* Уменьшаем иконку до 75% от ее первоначального размера */
 }
 
 #volume-slider {
     width: 200px; /* Задайте ширину ползунка */
 }
 
-/* Время */
-.track-info {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
+#trackTime {
+    font-size: 1.1em; /* Увеличение размера шрифта */
+    margin-bottom: 8px; /* Добавление отступа снизу, чтобы поднять над ползунком громкости */
+    display: block; /* Убедимся, что элемент отображается как блок для контроля отступов */
 }
+
 
 /* Контейнер для правой части */
 .right-section {
@@ -111,10 +116,6 @@ body {
     margin-top: 80px; /* Сдвиг вниз, чтобы не перекрывать логотип */
 }
 
-.player-details p {
-    font-size: 18px;
-    color: #666;
-}
 
 .play-btn {
     border: none;
@@ -141,8 +142,18 @@ body {
 
 /* Информация о треке */
 .track-info {
-    margin-top: 15px;
+    margin-top: 10px;
+    font-size: 18px;
     color: #333;
+}
+
+#song-info {
+    font-size: 18px; /* Размер шрифта для song-info */
+    width: 100%; /* Ширина в пределах контейнера */
+    white-space: nowrap; /* Запрет переноса текста */
+    overflow: hidden; /* Скрывать излишки текста */
+    text-overflow: ellipsis; /* Показать "..." если текст слишком длинный */
+    display: inline-block; /* Выровнять элемент внутри блока */
 }
 
 
@@ -151,7 +162,7 @@ body {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 0px;
 }
 
 .social-icons a {
@@ -160,8 +171,8 @@ body {
 }
 
 .social-icons img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     transition: transform 0.3s ease;
 }
 
