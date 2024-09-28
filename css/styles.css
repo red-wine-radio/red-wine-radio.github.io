@@ -15,8 +15,8 @@ body {
 }
 
 h4 {
-    margin-top: 10px; /* Уменьшаем верхний отступ */
-    margin-bottom: 10px; /* Уменьшаем нижний отступ */
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 /* Основной контейнер плеера */
@@ -135,6 +135,7 @@ h4 {
 }
 
 #song-info {
+    height: 40px;
     font-size: 18px;
     max-width: 100%; /* Ограничиваем ширину */
     white-space: normal; /* Позволяем перенос строк */
@@ -154,11 +155,12 @@ h4 {
 
 .social-icons a {
     margin: 15px 0;
+    opacity: 0.6; /* Прозрачность 70% */
 }
 
 .social-icons img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     transition: transform 0.3s ease;
 }
 
