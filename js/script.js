@@ -4,6 +4,7 @@ const playButton = document.getElementById('play-btn');
 const playIcon = document.getElementById('play-icon');
 const trackTime = document.getElementById('trackTime');
 const songInfo = document.getElementById('song-info');
+const albumCover = document.querySelector('.logo-overlay'); // Элемент для обложки
 
 // Переменная для отслеживания состояния плеера и времени трека
 let isPlaying = false;
@@ -71,9 +72,36 @@ eventSource.addEventListener('message', function(event) {
         // Сбрасываем и запускаем таймер отсчета времени с момента обновления трека в интерфейсе
         startTrackTimeUpdate();
 
+        // Получение и обновление обложки трека
+        updateAlbumCover(artist, title);
+
     }, 10000); // Задержка в 10 секунд
 });
 
 eventSource.addEventListener('ping', function() {
     console.log('Ping received');
 });
+
+// Функция для обновления обложки трека
+function updateAlbumCover(artist, title) {
+    // Создаем запрос к Deezer API для получения обложки
+    const deezerApiUrl = `https://api.deezer.com/search?q=${encodeURIComponent(artist)} ${encodeURIComponent(title)}&output=jsonp&callback=handleDeezerResponse`;
+
+    const script = document.createElement('script');
+    script.src = deezerApiUrl;
+    document.body.appendChild(script);
+}
+
+// Обработка ответа от Deezer API
+function handleDeezerResponse(data) {
+    if (data.data && data.data.length > 0) {
+        // Получаем URL обложки альбома
+        const artworkUrl = data.data[0].album.cover_big;
+        
+        // Если обложка найдена, обновляем изображение в плеере
+        albumCover.src = artworkUrl;
+    } else {
+        // Если обложка не найдена, возвращаем логотип
+        albumCover.src = 'https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg';
+    }
+}

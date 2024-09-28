@@ -45,19 +45,14 @@ body {
     flex-direction: column;
     justify-content: flex-end; /* Это заставляет контент прилипнуть к нижней части */
     height: 100%; /* Полная высота родительского контейнера */
-    margin-top: auto; /* Сдвигает содержимое вниз */
+    margin-top: -20px; /* Поднимает секцию вверх */
+    position: relative;
 }
 
 .left-section h1 {
     width: 68%; 
     margin-right: 2%; /* Отступ справа */
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-}
-
-.left-section p {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
     color: #333;
 }
@@ -65,10 +60,9 @@ body {
 /* Контрол громкости */
 .volume-control {
     display: flex;
-    justify-content: flex-end; /* Сдвигает ползунок к правому краю контейнера */
-    align-items: center;
-    gap: 15px;
-    margin-top: 10px;
+    align-items: center;  /* Вертикальное выравнивание */
+    justify-content: flex-start; /* Прижимаем содержимое к левой части */
+    gap: 10px;  /* Промежуток между иконкой и ползунком */
 }
 
 .fa-volume-up {
@@ -80,20 +74,13 @@ body {
     width: 200px; /* Задайте ширину ползунка */
 }
 
-#trackTime {
-    font-size: 1.1em; /* Увеличение размера шрифта */
-    margin-bottom: 8px; /* Добавление отступа снизу, чтобы поднять над ползунком громкости */
-    display: block; /* Убедимся, что элемент отображается как блок для контроля отступов */
-}
-
-
 /* Контейнер для правой части */
 .right-section {
     width: 30%;
     display: flex;
     flex-direction: column; /* Вертикальная колонка */
     align-items: center;
-    justify-content: space-between; 
+    justify-content: center; 
     height: 100%; /* Убедитесь, что контейнер занимает всю высоту */
 }
 
@@ -111,9 +98,8 @@ body {
 
 /* Детали плеера */
 .player-details h1 {
-    font-size: 24px;
+    font-size: 40px;
     color: #333;
-    margin-top: 80px; /* Сдвиг вниз, чтобы не перекрывать логотип */
 }
 
 
@@ -122,6 +108,7 @@ body {
     background-color: transparent; /* Убираем фон */
     padding: 0;
     cursor: pointer;
+    margin-top: 60px; 
 }
 
 /* Кнопка воспроизведения */
@@ -131,7 +118,7 @@ body {
     border-radius: 50%; /* Делаем контейнер круглым */
     overflow: hidden; /* Скрываем лишние части изображения, чтобы они не выходили за границы */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);  /* Добавляем тень вокруг круга */
-    margin-left: 0px;
+    margin-left: 15px;
 }
 
 .image-container img {
@@ -142,18 +129,23 @@ body {
 
 /* Информация о треке */
 .track-info {
-    margin-top: 10px;
-    font-size: 18px;
-    color: #333;
+    height: 40px; /* Фиксированная высота */
+    overflow: hidden; /* Скрыть переполнение */
+    white-space: nowrap; /* Текст в одну строку */
+    text-overflow: ellipsis; /* Добавить многоточие при переполнении */
+    display: flex; /* Используем flexbox для контроля расположения */
+    align-items: center; /* Вертикальное выравнивание текста */
+    justify-content: center; /* Горизонтальное выравнивание текста */
+    padding: 0 10px; /* Отступы внутри блока */
 }
 
 #song-info {
     font-size: 18px; /* Размер шрифта для song-info */
-    width: 100%; /* Ширина в пределах контейнера */
+    max-width: 100%; /* Максимальная ширина в пределах контейнера */
     white-space: nowrap; /* Запрет переноса текста */
     overflow: hidden; /* Скрывать излишки текста */
     text-overflow: ellipsis; /* Показать "..." если текст слишком длинный */
-    display: inline-block; /* Выровнять элемент внутри блока */
+    margin-top: 0; /* Убираем отступ сверху */
 }
 
 
