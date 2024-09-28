@@ -101,7 +101,13 @@ function handleDeezerResponse(data) {
         // Если обложка найдена, обновляем изображение в плеере
         albumCover.src = artworkUrl;
     } else {
-        // Если обложка не найдена, возвращаем логотип
+        // Если обложка не найдена, возвращаем логотип и запускаем повторную попытку через 5 секунд
         albumCover.src = 'https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg';
+        
+        // Запускаем повторную попытку через 5 секунд
+        setTimeout(() => {
+            console.log("Повторная попытка загрузки обложки...");
+            loadCoverArt(currentArtist, currentTitle); // Повторная попытка загрузки обложки
+        }, 5000);
     }
 }

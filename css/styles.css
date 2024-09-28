@@ -14,21 +14,17 @@ body {
     font-family: 'Flamenco-Regular', sans-serif; /* Используем кастомный шрифт */
 }
 
-/* Пример для иконок или элементов */
-.icon {
-    font-family: 'fontawesome-webfont';
-}
-
 /* Основной контейнер плеера */
 .player-container {
     position: relative;
-    width: 400px; 
-    height: 500px;/* Общая ширина плеера */
+    width: 400px;
+    height: 500px; /* Общая высота плеера */
     padding: 40px;
     background-color: #EAF0F5;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     margin: 50px auto;
+    overflow: visible; /* Позволяем элементам выходить за пределы контейнера */
 }
 
 /* Контейнер для левой и правой части */
@@ -45,106 +41,101 @@ body {
     flex-direction: column;
     justify-content: flex-end; /* Это заставляет контент прилипнуть к нижней части */
     height: 100%; /* Полная высота родительского контейнера */
-    margin-top: -20px; /* Поднимает секцию вверх */
     position: relative;
+    margin-top: -20px; /* Поднимает секцию вверх */
 }
 
 .left-section h1 {
-    width: 68%; 
-    margin-right: 2%; /* Отступ справа */
+    width: 100%; 
     font-size: 23px;
     font-weight: bold;
     color: #333;
+    margin-bottom: 20px; /* Добавлен отступ снизу */
 }
 
 /* Контрол громкости */
 .volume-control {
     display: flex;
-    align-items: center;  /* Вертикальное выравнивание */
+    align-items: center; /* Вертикальное выравнивание */
     justify-content: flex-start; /* Прижимаем содержимое к левой части */
-    gap: 10px;  /* Промежуток между иконкой и ползунком */
+    gap: 10px; /* Промежуток между иконкой и ползунком */
+    margin-bottom: 20px; /* Отступ снизу для предотвращения перекрытия */
 }
 
 .fa-volume-up {
     transform: scale(0.60);
-    margin-right: 5spx; /* Уменьшаем иконку до 75% от ее первоначального размера */
 }
 
 #volume-slider {
-    width: 200px; /* Задайте ширину ползунка */
+    width: 200px; /* Ширина ползунка */
 }
 
-/* Контейнер для правой части */
+/* Правая часть */
 .right-section {
-    width: 30%;
     display: flex;
+    flex-shrink: 0;
     flex-direction: column; /* Вертикальная колонка */
     align-items: center;
-    justify-content: center; 
-    height: 100%; /* Убедитесь, что контейнер занимает всю высоту */
+    justify-content: center;
+    width: 20%; /* Ширина правой секции */
+    height: 100%; /* Полная высота родительского контейнера */
 }
 
 /* Логотип наложенный сверху */
 .logo-overlay {
     position: absolute;
-    top: 40px; /* Сдвиг вверх */
+    top: 40px; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
     left: -20px; /* Сдвиг влево */
     width: 310px; /* Ширина логотипа */
     height: 310px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Тень вокруг логотипа */
     border-radius: 7%; /* Закругленные углы для логотипа */
     z-index: 10; /* Разместить поверх других элементов */
-}
-
-/* Детали плеера */
-.player-details h1 {
-    font-size: 40px;
-    color: #333;
-}
-
-
-.play-btn {
-    border: none;
-    background-color: transparent; /* Убираем фон */
-    padding: 0;
-    cursor: pointer;
-    margin-top: 60px; 
+    overflow: visible; /* Позволяем логотипу выходить за пределы */
 }
 
 /* Кнопка воспроизведения */
+.play-btn {
+    border: none;
+    background-color: transparent; /* Убираем фон */
+    padding: 70;
+    cursor: pointer;
+    margin-top: 80px; /* Поднимает кнопку вверх */
+}
+
 .image-container {
-    width: 90px;  /* Ширина контейнера */
-    height: 90px; /* Высота контейнера */
+    width: 70px; /* Ширина контейнера */
+    height: 70px; /* Высота контейнера */
     border-radius: 50%; /* Делаем контейнер круглым */
-    overflow: hidden; /* Скрываем лишние части изображения, чтобы они не выходили за границы */
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);  /* Добавляем тень вокруг круга */
+    overflow: hidden; /* Скрываем лишние части изображения */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Тень вокруг круга */
     margin-left: 15px;
 }
 
 .image-container img {
-    width: 100%;  /* Изображение полностью заполняет круглый контейнер */
-    height: 100%; /* Сохраняет пропорции */
+    width: 100%; /* Изображение полностью заполняет контейнер */
+    height: 100%; /* Сохраняем пропорции */
 }
-
 
 /* Информация о треке */
 .track-info {
-    height: 40px; /* Фиксированная высота */
-    overflow: hidden; /* Скрыть переполнение */
-    white-space: nowrap; /* Текст в одну строку */
-    text-overflow: ellipsis; /* Добавить многоточие при переполнении */
-    display: flex; /* Используем flexbox для контроля расположения */
-    align-items: center; /* Вертикальное выравнивание текста */
-    justify-content: center; /* Горизонтальное выравнивание текста */
+    height: auto; /* Автоматическая высота */
+    overflow: hidden; /* Скрываем переполнение */
+    white-space: normal; /* Разрешаем перенос текста */
+    display: flex;
+    align-items: center;
+    justify-content: start;
     padding: 0 10px; /* Отступы внутри блока */
+    max-width: 260px; /* Фиксированная максимальная ширина контейнера */
 }
 
 #song-info {
-    font-size: 18px; /* Размер шрифта для song-info */
-    max-width: 100%; /* Максимальная ширина в пределах контейнера */
-    white-space: nowrap; /* Запрет переноса текста */
-    overflow: hidden; /* Скрывать излишки текста */
-    text-overflow: ellipsis; /* Показать "..." если текст слишком длинный */
+    font-size: 18px;
+    white-space: normal; /* Разрешаем перенос текста */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word; /* Переносим длинные слова */
+    text-align: center; /* Выравнивание текста по центру */
     margin-top: 0; /* Убираем отступ сверху */
 }
 
@@ -154,12 +145,11 @@ body {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: 0px;
+    margin-top: 10px;
 }
 
 .social-icons a {
-    margin: 0 30px;
-    margin-top: 50px;
+    margin: 20px 0;
 }
 
 .social-icons img {
