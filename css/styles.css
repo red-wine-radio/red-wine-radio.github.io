@@ -1,6 +1,18 @@
 body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #D8E1EC; /* Устанавливаем цвет фона для всей страницы */
     font-size: 150%; 
+}
+
+/* Внешний контейнер, который растягивается на всю ширину устройства */
+.outer-container {
+    display: flex;
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    height: 100vh; /* Высота 100% от высоты экрана */
+    background-color: #D8E1EC; /* Цвет фона */
 }
 
 @font-face {
@@ -189,4 +201,13 @@ h4 {
 
 .history-info {
     font-size: 16px;
+}
+
+/* Media Query для экранов меньше 768px (типично для телефонов) */
+@media screen and (max-width: 768px) {
+    .outer-container {
+        width: 100%; /* Устанавливаем ширину контейнера 100% от ширины экрана */
+        margin: 0 20px; /* Небольшие отступы по бокам */
+        box-sizing: border-box; /* Включаем отступы и бордер в расчет ширины */
+    }
 }
