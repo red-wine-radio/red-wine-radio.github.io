@@ -1,26 +1,31 @@
 body {
     background-color: #D8E1EC; /* Устанавливаем цвет фона для всей страницы */
-    font-size: 150%; /* Увеличиваем все шрифты на 20% */
+    font-size: 150%; 
 }
 
 @font-face {
-    font-family: 'Flamenco-Regular'; /* Имя кастомного шрифта */
-    src: url('../fonts/Flamenco-Regular.ttf') format('truetype'); /* Путь к вашему шрифту */
+    font-family: 'Flamenco-Regular'; 
+    src: url('../fonts/Flamenco-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 body {
-    font-family: 'Flamenco-Regular', sans-serif; /* Используем кастомный шрифт */
+    font-family: 'Flamenco-Regular', sans-serif;
+}
+
+h4 {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 /* Основной контейнер плеера */
 .player-container {
     position: relative;
     width: 400px;
-    height: 500px; /* Общая высота плеера */
+    height: 710px; /* Общая высота плеера */
     padding: 40px;
-    background-color: #EAF0F5;
+    background-color: #D8E1EC;
     border-radius: 15px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     margin: 50px auto;
@@ -39,10 +44,10 @@ body {
 .left-section {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Это заставляет контент прилипнуть к нижней части */
+    justify-content: flex-end; 
     height: 100%; /* Полная высота родительского контейнера */
     position: relative;
-    margin-top: -20px; /* Поднимает секцию вверх */
+    margin-top: -50px; /* Поднимает секцию вверх */
 }
 
 .left-section h1 {
@@ -84,13 +89,13 @@ body {
 /* Логотип наложенный сверху */
 .logo-overlay {
     position: absolute;
-    top: 40px; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
-    left: -20px; /* Сдвиг влево */
-    width: 310px; /* Ширина логотипа */
-    height: 310px;
+    top: -1%; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
+    left: 40px; /* Сдвиг влево */
+    width: 250px; /* Ширина логотипа */
+    height: 250px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Тень вокруг логотипа */
     border-radius: 7%; /* Закругленные углы для логотипа */
-    z-index: 10; /* Разместить поверх других элементов */
+    /* z-index: 10;  */
     overflow: visible; /* Позволяем логотипу выходить за пределы */
 }
 
@@ -100,7 +105,7 @@ body {
     background-color: transparent; /* Убираем фон */
     padding: 70;
     cursor: pointer;
-    margin-top: 80px; /* Поднимает кнопку вверх */
+    margin-top: 60px; /* Поднимает кнопку вверх */
 }
 
 .image-container {
@@ -109,7 +114,6 @@ body {
     border-radius: 50%; /* Делаем контейнер круглым */
     overflow: hidden; /* Скрываем лишние части изображения */
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Тень вокруг круга */
-    margin-left: 15px;
 }
 
 .image-container img {
@@ -130,34 +134,59 @@ body {
 }
 
 #song-info {
+    height: 40px;
     font-size: 18px;
-    white-space: normal; /* Разрешаем перенос текста */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    max-width: 100%; /* Ограничиваем ширину */
+    white-space: normal; /* Позволяем перенос строк */
+    overflow: hidden; /* Скрываем переполнение */
+    line-height: 1.2em; /* Устанавливаем высоту строки */
     word-wrap: break-word; /* Переносим длинные слова */
-    text-align: center; /* Выравнивание текста по центру */
-    margin-top: 0; /* Убираем отступ сверху */
 }
-
 
 /* Социальные иконки */
 .social-icons {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: 10px;
+    margin-top: -410px;
 }
 
 .social-icons a {
-    margin: 20px 0;
+    margin: 15px 0;
+    opacity: 0.6; /* Прозрачность 70% */
 }
 
 .social-icons img {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     transition: transform 0.3s ease;
 }
 
 .social-icons img:hover {
     transform: scale(1.1); /* Увеличение при наведении */
+}
+
+/* История треков */
+.history-list {
+    height: 250px; /* Фиксированная высота для пяти треков */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Выравниваем треки по верхней части */
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    height: 45px; /* Уменьшаем высоту для каждого трека */
+    margin-bottom: 20px; /* Уменьшаем отступ между треками */
+}
+
+.history-thumbnail {
+    width: 45px;
+    height: 45px;
+    margin-right: 5px;
+}
+
+.history-info {
+    font-size: 14px;
 }
