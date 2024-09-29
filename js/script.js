@@ -75,8 +75,15 @@ function updateTrackHistory(artist, title, artworkUrl) {
     });
 }
 
-// Функция для запроса обложки через API Deezer с повторной попыткой
+
 function fetchAlbumCover(artist, title) {
+    // Проверяем, является ли артист "RWR", если да - не выполняем запрос
+    if (artist === 'RWR') {
+        // Устанавливаем логотип по умолчанию
+        updateAlbumCover('https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg', artist, title);
+        return;
+    }
+
     const deezerApiUrl = `https://api.deezer.com/search?q=${encodeURIComponent(artist)} ${encodeURIComponent(title)}&output=jsonp&callback=handleDeezerResponse`;
 
     // Первый запрос
@@ -122,12 +129,19 @@ volumeSlider.noUiSlider.on('update', (values) => {
 
 const eventSource = new EventSource('https://api.zeno.fm/mounts/metadata/subscribe/pcbduafehg0uv');
 
+// Событие получения данных о треке
 eventSource.addEventListener('message', function(event) {
     const data = JSON.parse(event.data);
     const streamTitle = data.streamTitle;
 
     // Разделяем название и исполнителя
     const [artist, title] = streamTitle.split(' - ');
+
+    // Проверяем, является ли артист "RWR", если да - пропускаем этот трек
+    if (artist === 'RWR') {
+        console.log("Трек с артистом RWR пропущен");
+        return;
+    }
 
     // Добавляем задержку в 10 секунд перед обновлением информации о треке
     setTimeout(() => {
