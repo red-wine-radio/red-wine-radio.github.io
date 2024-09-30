@@ -36,10 +36,10 @@ h4 {
 .player-container {
     position: relative;
     width: 400px;
-    height: 710px; /* Общая высота плеера */
+    height: 700px; /* Общая высота плеера */
     padding: 40px;
     background-color: #D8E1EC;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); */
     margin: 50px auto;
     overflow: visible; /* Позволяем элементам выходить за пределы контейнера */
@@ -49,8 +49,9 @@ h4 {
 .player-content {
     display: flex;
     justify-content: space-between; /* Разделяем контент на левую и правую часть */
-    align-items: flex-start; /* Выравниваем контент сверху */
+    align-items: flex-end; /* Выравниваем контент сверху */
     height: 100%; /* Полная высота родительского контейнера */
+    margin-top: 70px;
 }
 
 /* Левая часть */
@@ -60,7 +61,8 @@ h4 {
     justify-content: flex-end; 
     height: 100%; /* Полная высота родительского контейнера */
     position: relative;
-    margin-top: -30px; /* Поднимает секцию вверх */
+    margin-top: -40px; /* Поднимает секцию вверх */
+    margin-left: 50px;
 }
 
 .left-section h1 {
@@ -103,20 +105,20 @@ h4 {
 .logo-overlay {
     position: absolute;
     top: -1%; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
-    left: 40px; /* Сдвиг влево */
+    left: 0px; /* Сдвиг влево */
     width: 250px; /* Ширина логотипа */
     height: 250px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Тень вокруг логотипа */
     border-radius: 7%; /* Закругленные углы для логотипа */
-    /* z-index: 10;  */
-    overflow: visible; /* Позволяем логотипу выходить за пределы */
 }
 
 /* Кнопка воспроизведения */
 .play-btn {
+    position: absolute;
+    top: 320px;
     border: none;
     background-color: transparent; /* Убираем фон */
-    padding: 70;
+    padding: 0;
     cursor: pointer;
     margin-top: 80px; /* Поднимает кнопку вверх */
 }
@@ -161,7 +163,7 @@ h4 {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: -395px;
+    margin-top: -450px;
 }
 
 .social-icons a {

@@ -27,20 +27,20 @@ playButton.addEventListener('click', () => {
     }
 });
 
-// Функция обновления времени с момента обновления интерфейса трека
-function updateTrackTimeSinceChange() {
-    const minutes = Math.floor(secondsSinceUpdate / 60);
-    const seconds = Math.floor(secondsSinceUpdate % 60);
-    trackTime.textContent = `Time ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-    secondsSinceUpdate++; // Увеличиваем количество секунд с момента обновления интерфейса
-}
+// // Функция обновления времени с момента обновления интерфейса трека
+// function updateTrackTimeSinceChange() {
+//     const minutes = Math.floor(secondsSinceUpdate / 60);
+//     const seconds = Math.floor(secondsSinceUpdate % 60);
+//     trackTime.textContent = `Time ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+//     secondsSinceUpdate++; // Увеличиваем количество секунд с момента обновления интерфейса
+// }
 
-// Функция сброса времени и перезапуска отсчета
-function startTrackTimeUpdate() {
-    secondsSinceUpdate = 0; // Сброс секунд до нуля
-    clearInterval(timeUpdateInterval); // Остановка предыдущего таймера (если был)
-    timeUpdateInterval = setInterval(updateTrackTimeSinceChange, 1000); // Запуск обновления каждую секунду
-}
+// // Функция сброса времени и перезапуска отсчета
+// function startTrackTimeUpdate() {
+//     secondsSinceUpdate = 0; // Сброс секунд до нуля
+//     clearInterval(timeUpdateInterval); // Остановка предыдущего таймера (если был)
+//     timeUpdateInterval = setInterval(updateTrackTimeSinceChange, 1000); // Запуск обновления каждую секунду
+// }
 
 
 // Функция для обновления истории треков
@@ -57,7 +57,7 @@ function updateTrackHistory(artist, title, artworkUrl) {
     trackHistory.unshift({ artist, title, artworkUrl });
 
     // Ограничиваем историю до 5 треков в массиве
-    if (trackHistory.length > 5) {
+    if (trackHistory.length > 4) {
         trackHistory.pop();
     }
 
