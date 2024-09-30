@@ -5,6 +5,8 @@ body {
     background-color: #D8E1EC; /* Устанавливаем цвет фона для всей страницы */
     font-size: 150%;
     overflow: hidden; /* Отключаем всю прокрутку */
+    touch-action: none;
+    overscroll-behavior: contain;
 }
 
 /* Для того чтобы контент не двигался при сведении пальцев */
