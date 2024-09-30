@@ -7,6 +7,23 @@ body {
     overflow: hidden; /* Отключаем всю прокрутку */
 }
 
+/* Для того чтобы контент не двигался при сведении пальцев */
+body {
+    overscroll-behavior: none;
+    touch-action: manipulation;
+}
+
+* {
+    /* Отключаем возможность выделения текста для предотвращения сдвига */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* Отключаем зумирование при сведении пальцев */
+html {
+    touch-action: pan-x pan-y;
+}
+
 /* Внешний контейнер, который растягивается на всю ширину устройства */
 .outer-container {
     display: flex;
