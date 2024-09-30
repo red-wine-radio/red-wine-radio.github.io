@@ -42,6 +42,7 @@ function startTrackTimeUpdate() {
     timeUpdateInterval = setInterval(updateTrackTimeSinceChange, 1000); // Запуск обновления каждую секунду
 }
 
+
 // Функция для обновления истории треков
 function updateTrackHistory(artist, title, artworkUrl) {
     // Проверяем, есть ли трек уже в истории
@@ -55,7 +56,7 @@ function updateTrackHistory(artist, title, artworkUrl) {
     // Добавляем трек в начало истории
     trackHistory.unshift({ artist, title, artworkUrl });
 
-    // Ограничиваем историю до 5 треков
+    // Ограничиваем историю до 5 треков в массиве
     if (trackHistory.length > 5) {
         trackHistory.pop();
     }
@@ -64,7 +65,10 @@ function updateTrackHistory(artist, title, artworkUrl) {
     const historyContainer = document.querySelector('.history-list');
     historyContainer.innerHTML = ''; // Очищаем текущую историю
 
-    trackHistory.forEach(track => {
+    // Показываем только треки с индекса 1 до 3 (игнорируем текущий трек, который находится на 0 индексе)
+    const visibleHistory = trackHistory.slice(1, 4);
+
+    visibleHistory.forEach(track => {
         const historyItem = document.createElement('div');
         historyItem.classList.add('history-item');
         historyItem.innerHTML = `
