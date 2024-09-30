@@ -36,11 +36,11 @@ h4 {
 .player-container {
     position: relative;
     width: 400px;
-    height: 700px; /* Общая высота плеера */
+    height: 650px; /* Общая высота плеера */
     padding: 40px;
     background-color: #D8E1EC;
     /* border-radius: 15px; */
-    /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     margin: 50px auto;
     overflow: visible; /* Позволяем элементам выходить за пределы контейнера */
 }
@@ -51,7 +51,7 @@ h4 {
     justify-content: space-between; /* Разделяем контент на левую и правую часть */
     align-items: flex-end; /* Выравниваем контент сверху */
     height: 100%; /* Полная высота родительского контейнера */
-    margin-top: 70px;
+
 }
 
 /* Левая часть */
@@ -61,8 +61,8 @@ h4 {
     justify-content: flex-end; 
     height: 100%; /* Полная высота родительского контейнера */
     position: relative;
-    margin-top: -40px; /* Поднимает секцию вверх */
-    margin-left: 50px;
+    margin-top: 0px; /* Поднимает секцию вверх */
+    margin-left: 20px;
 }
 
 .left-section h1 {
@@ -104,7 +104,7 @@ h4 {
 /* Логотип наложенный сверху */
 .logo-overlay {
     position: absolute;
-    top: -1%; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
+    top: 0%; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
     left: 0px; /* Сдвиг влево */
     width: 250px; /* Ширина логотипа */
     height: 250px;
@@ -115,7 +115,7 @@ h4 {
 /* Кнопка воспроизведения */
 .play-btn {
     position: absolute;
-    top: 320px;
+    top: 250px;
     border: none;
     background-color: transparent; /* Убираем фон */
     padding: 0;
@@ -163,7 +163,7 @@ h4 {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: -450px;
+    margin-top: -400px;
 }
 
 .social-icons a {
@@ -183,10 +183,10 @@ h4 {
 
 /* История треков */
 .history-list {
-    height: 250px; /* Фиксированная высота для пяти треков */
+    height: 200px; /* Фиксированная высота для пяти треков */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Выравниваем треки по верхней части */
+    justify-content: flex-end; 
 }
 
 .history-item {
