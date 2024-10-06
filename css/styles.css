@@ -228,3 +228,27 @@ h4 {
     font-size: 16px;
 }
 
+.telegram-link {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+}
+
+.telegram-img {
+    width: 50px;
+    height: 50px;
+}
+
+.telegram-text {
+    display: none;
+    position: absolute;
+    top: 60px; /* Смещение текста под изображением */
+    left: 50%;
+    transform: translateX(-50%);
+    color: black;
+    font-size: 14px;
+}
+
+.telegram-link:hover .telegram-text {
+    display: block;
+}

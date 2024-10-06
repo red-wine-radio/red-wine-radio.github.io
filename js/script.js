@@ -27,20 +27,13 @@ playButton.addEventListener('click', () => {
     }
 });
 
-// // Функция обновления времени с момента обновления интерфейса трека
-// function updateTrackTimeSinceChange() {
-//     const minutes = Math.floor(secondsSinceUpdate / 60);
-//     const seconds = Math.floor(secondsSinceUpdate % 60);
-//     trackTime.textContent = `Time ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-//     secondsSinceUpdate++; // Увеличиваем количество секунд с момента обновления интерфейса
-// }
+document.getElementById("telegram-img").addEventListener("mouseover", function() {
+    this.src = "img/Bot.png";
+});
 
-// // Функция сброса времени и перезапуска отсчета
-// function startTrackTimeUpdate() {
-//     secondsSinceUpdate = 0; // Сброс секунд до нуля
-//     clearInterval(timeUpdateInterval); // Остановка предыдущего таймера (если был)
-//     timeUpdateInterval = setInterval(updateTrackTimeSinceChange, 1000); // Запуск обновления каждую секунду
-// }
+document.getElementById("telegram-img").addEventListener("mouseout", function() {
+    this.src = "img/telegram.png";
+});
 
 
 // Функция для обновления истории треков
