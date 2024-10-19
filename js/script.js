@@ -17,11 +17,13 @@ let secondsSinceUpdate = 0;
 // Функция переключения состояния плеера
 playButton.addEventListener('click', () => {
     if (!isPlaying) {
+        audio.load()
         audio.play();
         playIcon.src = 'img/pause.png'; // Меняем изображение на "Pause"
         isPlaying = true;
     } else {
         audio.pause();
+        audio.load()
         playIcon.src = 'img/play.png'; // Меняем изображение на "Play"
         isPlaying = false;
     }
@@ -135,8 +137,8 @@ eventSource.addEventListener('message', function(event) {
     const [artist, title] = streamTitle.split(' - ');
 
     // Проверяем, является ли артист "RWR", если да - пропускаем этот трек
-    if (artist === 'RWR') {
-        console.log("Трек с артистом RWR пропущен");
+    if (artist === 'RWR' || artist === 'Offline') {
+        console.log("Трек с артистом RWR или offline пропущен");
         return;
     }
 

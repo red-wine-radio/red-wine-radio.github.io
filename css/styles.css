@@ -108,10 +108,11 @@ h4 {
 
 .fa-volume-up {
     transform: scale(0.60);
+    opacity: 0.6;
 }
 
 #volume-slider {
-    width: 200px; /* Ширина ползунка */
+    width: 200px; 
 }
 
 /* Правая часть */
@@ -127,7 +128,7 @@ h4 {
 /* Логотип */
 .logo-overlay {
     position: absolute;
-    top: 6%; /* Сдвиг вверх, чтобы вывести логотип за пределы контейнера */
+    top: 6%;
     width: 240px; /* Ширина логотипа */
     height: 240px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.6); /* Тень вокруг логотипа */
@@ -190,7 +191,7 @@ h4 {
 
 .social-icons a {
     margin: 15px 0;
-    opacity: 0.6; /* Прозрачность 70% */
+    opacity: 0.6; /* Прозрачность 60% */
 }
 
 .social-icons img {
