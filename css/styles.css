@@ -207,7 +207,7 @@ h4 {
     height: 200px; /* Фиксированная высота для пяти треков */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .history-item {
@@ -226,6 +226,7 @@ h4 {
 
 .history-info {
     font-size: 16px;
+    margin-left: 10px;
 }
 
 .telegram-link {
@@ -253,7 +254,65 @@ h4 {
     display: block;
 }
 
+/* Темная тема Telegram */
+
 .dark-mode {
-    background-color: #111;
-    color: #eee;
+    background-color: #7F1734 !important; /* винный цвет */
+    color: #cccccc !important;
+}
+
+.dark-mode .outer-container {
+    background-color: #2a1a24 !important;
+}
+
+.dark-mode .player-container {
+    background-color: #2a1a24
+    !important;
+}
+
+.dark-mode .left-section h1,
+.dark-mode .player-container h4,
+.dark-mode #song-info,
+.dark-mode .history-info,
+.dark-mode .track-info,
+.dark-mode .telegram-text {
+    color: #cccccc !important;
+}
+.dark-mode #song-info {
+    color: #cccccc !important;
+}
+
+.dark-mode .volume-control i,
+.dark-mode .social-icons a {
+    opacity: 0.6;
+}
+
+.dark-mode .history-thumbnail {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.dark-mode .social-icons img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.8) invert(1)
+}
+
+.dark-mode .telegram-text {
+    background-color: #222;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.dark-mode .social-icons img,
+.dark-mode .logo-overlay img {
+    filter: brightness(1.8) invert(1);
+}
+
+.dark-mode .fa.fa-volume-up {
+    color: #cccccc !important;
+    opacity: 1 !important;
+}
+
+.dark-mode .play-btn img {
+    opacity: 0.6;
+    filter: brightness(1.2);
 }

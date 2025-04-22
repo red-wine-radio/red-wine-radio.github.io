@@ -83,7 +83,6 @@ function updateTrackHistory(artist, title, artworkUrl) {
     });
 }
 
-
 function fetchAlbumCover(artist, title) {
     // Проверяем, является ли артист "RWR", если да - не выполняем запрос
     if (artist === 'RWR') {
@@ -169,12 +168,19 @@ eventSource.addEventListener('ping', function() {
     console.log('Ping received');
 });
 
-if (window.Telegram.WebApp) {
+if (window.Telegram && window.Telegram.WebApp) {
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
 
+    applyTelegramTheme();
+    Telegram.WebApp.onEvent('themeChanged', applyTelegramTheme);
+}
+
+function applyTelegramTheme() {
     const theme = Telegram.WebApp.colorScheme;
+    document.body.classList.remove('dark-mode');
+
     if (theme === 'dark') {
-        document.body.classList.add('dark-mode');
+    document.body.classList.add('dark-mode');
     }
 }
