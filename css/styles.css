@@ -331,3 +331,9 @@ h4 {
 :not(.in-telegram) .volume-label {
     display: none;
 }
+
+/* Гарантирует, что .volume-control не скрывается в Telegram */
+.in-telegram .volume-control {
+    visibility: visible;
+    pointer-events: auto;
+}
