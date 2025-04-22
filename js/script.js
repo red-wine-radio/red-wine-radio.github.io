@@ -168,9 +168,10 @@ eventSource.addEventListener('ping', function() {
     console.log('Ping received');
 });
 
-if (window.Telegram && window.Telegram.WebApp) {
+if (window.Telegram && window.Telegram.WebApp && Telegram.WebApp.platform !== 'unknown') {
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
+    document.body.classList.add('in-telegram');
 
     applyTelegramTheme();
     Telegram.WebApp.onEvent('themeChanged', applyTelegramTheme);

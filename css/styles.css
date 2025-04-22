@@ -256,18 +256,12 @@ h4 {
 
 /* Темная тема Telegram */
 
-.dark-mode {
-    background-color: #7F1734 !important; /* винный цвет */
-    color: #cccccc !important;
-}
-
 .dark-mode .outer-container {
-    background-color: #2a1a24 !important;
+    background-color: #2a2f3a !important;
 }
 
 .dark-mode .player-container {
-    background-color: #2a1a24
-    !important;
+    background-color: #2a2f3a !important;
 }
 
 .dark-mode .left-section h1,
@@ -315,4 +309,8 @@ h4 {
 .dark-mode .play-btn img {
     opacity: 0.6;
     filter: brightness(1.2);
+}
+
+.in-telegram .volume-wrapper {
+    display: none !important;
 }
