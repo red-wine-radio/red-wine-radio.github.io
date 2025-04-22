@@ -313,8 +313,21 @@ h4 {
     filter: brightness(1.2);
 }
 
-.in-telegram .volume-control {
-    visibility: hidden;
-    pointer-events: none;
-    min-height: 10px; /* Добавляем невидимый заполнитель */
+
+.volume-label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.in-telegram .fa.fa-volume-up,
+.in-telegram #volume-slider {
+    display: none;
+}
+
+.in-telegram .volume-label {
+    display: inline;
+}
+
+:not(.in-telegram) .volume-label {
+    display: none;
 }
