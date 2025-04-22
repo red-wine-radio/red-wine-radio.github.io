@@ -312,6 +312,6 @@ h4 {
     filter: brightness(1.2);
 }
 
-.in-telegram .volume-wrapper {
-    display: none !important;
+.in-telegram .volume-control {
+    visibility: hidden;
 }
