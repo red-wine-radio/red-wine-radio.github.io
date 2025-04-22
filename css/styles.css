@@ -121,6 +121,7 @@ h4 {
     justify-content: center;
     width: 100px; /* Задаем фиксированную ширину для правой секции */
     height: 100%;
+    margin-left: 10px;
 }
 
 /* Логотип */
