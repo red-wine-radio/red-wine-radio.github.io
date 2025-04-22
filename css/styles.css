@@ -73,18 +73,15 @@ h4 {
 /* Контейнер для левой и правой части */
 .player-content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: flex-end; /* Измените на flex-start для выравнивания по верху */
     height: 100%;
 }
 
 /* Левая часть */
 .left-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: calc(100% - 120px); /* Устанавливаем ширину левой секции */
-    margin-left: 20px;
+    flex-grow: 1;
+    width: calc(100% - 120px);
 }
 
 .left-section h1 {
@@ -97,6 +94,7 @@ h4 {
 
 /* Контрол громкости */
 .volume-control {
+    min-width: 250px;
     display: flex;
     align-items: center; /* Вертикальное выравнивание */
     justify-content: flex-start; /* Прижимаем содержимое к левой части */
@@ -332,8 +330,10 @@ h4 {
     display: none;
 }
 
-/* Гарантирует, что .volume-control не скрывается в Telegram */
 .in-telegram .volume-control {
-    visibility: visible;
-    pointer-events: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 40px;
+    min-width: 250px;
 }
