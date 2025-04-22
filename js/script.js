@@ -175,12 +175,6 @@ if (window.Telegram && window.Telegram.WebApp && Telegram.WebApp.platform !== 'u
 
     applyTelegramTheme();
     Telegram.WebApp.onEvent('themeChanged', applyTelegramTheme);
-    
-    const volumeControl = document.querySelector('.volume-control');
-    if (volumeControl) {
-        volumeControl.textContent = 'Now Playing:';
-        volumeControl.style.pointerEvents = 'none';
-    }
 }
 
 function applyTelegramTheme() {

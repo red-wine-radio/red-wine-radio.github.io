@@ -314,19 +314,7 @@ h4 {
 }
 
 .in-telegram .volume-control {
-    visibility: visible;
+    visibility: hidden;
     pointer-events: none;
-    min-height: 40px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    opacity: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.in-telegram .volume-control::before {
-    content: "Now Playing:";
-    margin-right: 10px;
+    min-height: 10px; /* Добавляем невидимый заполнитель */
 }
