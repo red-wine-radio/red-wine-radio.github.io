@@ -178,7 +178,8 @@ if (window.Telegram && window.Telegram.WebApp && Telegram.WebApp.platform !== 'u
     
     const volumeControl = document.querySelector('.volume-control');
     if (volumeControl) {
-      volumeControl.innerHTML = ''; // очистить содержимое
+        volumeControl.textContent = 'Now Playing:';
+        volumeControl.style.pointerEvents = 'none';
     }
 }
 
