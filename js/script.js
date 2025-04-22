@@ -17,14 +17,24 @@ let secondsSinceUpdate = 0;
 // Функция переключения состояния плеера
 playButton.addEventListener('click', () => {
     if (!isPlaying) {
-        audio.load()
-        audio.play();
-        playIcon.src = 'img/pause.png'; // Меняем изображение на "Pause"
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource('https://stream.zeno.fm/hls/pcbduafehg0uv');
+            hls.attachMedia(audio);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                audio.play();
+            });
+        } else if (audio.canPlayType('application/vnd.apple.mpegurl')) {
+            audio.src = 'https://stream.zeno.fm/hls/pcbduafehg0uv';
+            audio.addEventListener('loadedmetadata', function () {
+                audio.play();
+            });
+        }
+        playIcon.src = 'img/pause.png';
         isPlaying = true;
     } else {
         audio.pause();
-        audio.load()
-        playIcon.src = 'img/play.png'; // Меняем изображение на "Play"
+        playIcon.src = 'img/play.png';
         isPlaying = false;
     }
 });
@@ -36,7 +46,6 @@ document.getElementById("telegram-img").addEventListener("mouseover", function()
 document.getElementById("telegram-img").addEventListener("mouseout", function() {
     this.src = "img/telegram.png";
 });
-
 
 // Функция для обновления истории треков
 function updateTrackHistory(artist, title, artworkUrl) {
@@ -159,3 +168,13 @@ eventSource.addEventListener('message', function(event) {
 eventSource.addEventListener('ping', function() {
     console.log('Ping received');
 });
+
+if (window.Telegram.WebApp) {
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+
+    const theme = Telegram.WebApp.colorScheme;
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+}
