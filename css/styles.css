@@ -314,4 +314,5 @@ h4 {
 
 .in-telegram .volume-control {
     visibility: hidden;
+    pointer-events: none;
 }
