@@ -293,7 +293,10 @@ h4 {
     }
 
     .left-section h1 {
-        font-size: 18px;
+        .left-section h1 {
+            font-size: 18px;
+            margin-top: 220px; /* чтобы не налезал на логотип */
+        }
     }
 
     .history-info {
