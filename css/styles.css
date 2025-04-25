@@ -56,7 +56,8 @@ h4 {
 /* Основной контейнер плеера */
 .player-container {
     position: relative;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     height: 650px; /* Общая высота плеера */
     padding: 40px;
     background-color: #D8E1EC;
@@ -102,12 +103,13 @@ h4 {
     /* width: 100px; Задаем фиксированную ширину для правой секции */
     height: 100%;
     margin-left: 10px;
+    margin-right: 5px;
 }
 
 /* Логотип */
 .logo-overlay {
     position: absolute;
-    top: 8%;
+    top: 30px;
     width: 260px; /* Ширина логотипа */
     height: 260px;
     box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6); /* Тень вокруг логотипа */
@@ -116,13 +118,11 @@ h4 {
 
 /* Кнопка воспроизведения */
 .play-btn {
-    position: absolute;
-    top: 250px;
+    position: relative;
     border: none;
     background-color: transparent; /* Убираем фон */
     padding: 0;
     cursor: pointer;
-    margin-top: 85px; /* Поднимает кнопку вверх */
 }
 
 .image-container {
@@ -166,7 +166,7 @@ h4 {
     display: flex;
     flex-direction: column; /* Отображаем иконки в столбик */
     justify-content: center;
-    margin-top: -345px;
+    margin-top: -250px;
 }
 
 .social-icons a {
@@ -308,5 +308,5 @@ h4 {
 .left-section::before {
     content: "";
     display: block;
-    height: 220px; /* Отступ под логотип */
+
 }
