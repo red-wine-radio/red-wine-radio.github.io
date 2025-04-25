@@ -118,22 +118,6 @@ function updateAlbumCover(artworkUrl, artist, title) {
     updateTrackHistory(artist, title, artworkUrl); // Обновляем историю с обложкой
 }
 
-const volumeSlider = document.getElementById('volume-slider');
-noUiSlider.create(volumeSlider, {
-    start: [80], // Начальная громкость (80%)
-    range: {
-        'min': 0,
-        'max': 100
-    },
-    step: 1,
-    connect: [true, false]
-});
-
-// Обновление громкости при изменении ползунка
-volumeSlider.noUiSlider.on('update', (values) => {
-    audio.volume = values[0] / 100; // Преобразуем значение ползунка в диапазон 0-1
-});
-
 const eventSource = new EventSource('https://api.zeno.fm/mounts/metadata/subscribe/pcbduafehg0uv');
 
 // Событие получения данных о треке
@@ -167,21 +151,3 @@ eventSource.addEventListener('message', function(event) {
 eventSource.addEventListener('ping', function() {
     console.log('Ping received');
 });
-
-if (window.Telegram && window.Telegram.WebApp && Telegram.WebApp.platform !== 'unknown') {
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
-    document.body.classList.add('in-telegram');
-
-    applyTelegramTheme();
-    Telegram.WebApp.onEvent('themeChanged', applyTelegramTheme);
-}
-
-function applyTelegramTheme() {
-    const theme = Telegram.WebApp.colorScheme;
-    document.body.classList.remove('dark-mode');
-
-    if (theme === 'dark') {
-    document.body.classList.add('dark-mode');
-    }
-}
