@@ -63,8 +63,8 @@ h4 {
     background-color: #D8E1EC;
     /* border-radius: 15px; */
     /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); */
-    margin: 50px auto;
-    overflow: visible; /* Позволяем элементам выходить за пределы контейнера */
+    margin: 0px auto;
+    /* overflow: visible;  */
 }
 
 .player-container h4 {
@@ -74,9 +74,11 @@ h4 {
 /* Контейнер для левой и правой части */
 .player-content {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end; /* Измените на flex-start для выравнивания по верху */
+    align-items: flex-start;
     height: 100%;
+    position: relative;
 }
 
 /* Левая часть */
@@ -96,11 +98,10 @@ h4 {
 /* Правая часть */
 .right-section {
     display: flex;
-    flex-shrink: 0;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    /* width: 100px; Задаем фиксированную ширину для правой секции */
+    justify-content: flex-start;
+    width: 60px;
     height: 100%;
     margin-left: 10px;
     margin-right: 5px;
@@ -108,10 +109,9 @@ h4 {
 
 /* Логотип */
 .logo-overlay {
-    position: absolute;
-    top: 30px;
-    width: 260px; /* Ширина логотипа */
-    height: 260px;
+    top: 0px;
+    width: 100%; /* Ширина логотипа */
+    height: auto;
     box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6); /* Тень вокруг логотипа */
     border-radius: 7%; /* Закругленные углы для логотипа */
 }
@@ -120,9 +120,10 @@ h4 {
 .play-btn {
     position: relative;
     border: none;
-    background-color: transparent; /* Убираем фон */
+    background-color: transparent;
     padding: 0;
     cursor: pointer;
+    margin: 0; /* убираем верхний отступ */
 }
 
 .image-container {
@@ -131,7 +132,6 @@ h4 {
     border-radius: 50%; /* Делаем контейнер круглым */
     overflow: hidden; /* Скрываем лишние части изображения */
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Тень вокруг круга */
-    margin-top: 45px;
 }
 
 .image-container img {
@@ -141,6 +141,7 @@ h4 {
 
 /* Информация о треке */
 .track-info {
+    position: relative;
     height: auto; /* Автоматическая высота */
     overflow: hidden; /* Скрываем переполнение */
     white-space: normal; /* Разрешаем перенос текста */
@@ -148,25 +149,30 @@ h4 {
     align-items: center;
     justify-content: start;
     padding: 0 10px; /* Отступы внутри блока */
-    max-width: 260px; /* Фиксированная максимальная ширина контейнера */
+    width: 100%; /* Фиксированная максимальная ширина контейнера */
 }
 
 #song-info {
-    height: 40px;
+    display: flex;
+    align-items: center; /* по вертикали выравниваем */
+    justify-content: space-between; /* текст слева, кнопка справа */
+    width: 100%; /* растягиваем на всю ширину */
+    height: 60px;
     font-size: 18px;
-    max-width: 100%; /* Ограничиваем ширину */
-    white-space: normal; /* Позволяем перенос строк */
-    overflow: hidden; /* Скрываем переполнение */
-    line-height: 1.2em; /* Устанавливаем высоту строки */
-    word-wrap: break-word; /* Переносим длинные слова */
+    white-space: normal;
+    overflow: hidden;
+    line-height: 1.2em;
+    word-wrap: break-word;
+    text-align: left;
+    padding: 0 10px;
 }
 
 /* Социальные иконки */
 .social-icons {
     display: flex;
-    flex-direction: column; /* Отображаем иконки в столбик */
-    justify-content: center;
-    margin-top: -250px;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0px;
 }
 
 .social-icons a {
@@ -200,9 +206,9 @@ h4 {
 }
 
 .history-thumbnail {
-    width: 45px;
-    height: 45px;
-    margin-right: 5px;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
     border-radius: 9%;
 }
 
@@ -232,10 +238,6 @@ h4 {
     font-size: 14px;
 }
 
-.telegram-link:hover .telegram-text {
-    display: block;
-}
-
 .outer-container,
 .player-container {
     background-color: #2a2f3a !important;
@@ -250,7 +252,7 @@ h4 {
     color: #cccccc !important;
 }
 
-.volume-control i,
+/* .volume-control i, */
 .social-icons a {
     opacity: 0.6;
 }
@@ -264,11 +266,11 @@ h4 {
     filter: brightness(1.8) invert(1);
 }
 
-.telegram-text {
+/* .telegram-text {
     background-color: #222;
     padding: 5px 10px;
     border-radius: 5px;
-}
+} */
 
 .social-icons img,
 .logo-overlay img {

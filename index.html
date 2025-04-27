@@ -4,8 +4,8 @@
 <head>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8NT9FB34M"></script>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest" defer></script>
+<script src="https://telegram.org/js/telegram-web-app.js" defer></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -31,22 +31,31 @@
             <div class="player-content">
                 <!-- Левая часть: Название станции, Онлайн Live Stream, громкость, время -->
                 <div class="left-section">
-                                <!-- Логотип уже настроен и находится в player-container -->
-                    <div class="album-cover">
-                        <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo" class="logo-overlay">
-                    </div>
+
+                    <!-- Логотип -->
+                    <img src="https://raw.githubusercontent.com/red-wine-radio/red-wine-radio.github.io/main/RWR600.jpg" alt="Red Wine Radio Logo" class="logo-overlay">
+
+                    <!-- Название станции -->
                     <h1>Red Wine Radio 🍷</h1>
 
+                    <!-- Информация о треке -->
                     <div class="track-info">
                         <span id="song-info">Loading track info...</span> 
+                        <!-- Кнопка Play -->
+                        <button class="play-btn" id="play-btn">
+                            <div class="image-container">
+                                <img src="img/play.png" alt="Play" id="play-icon" />
+                            </div>
+                        </button>
                     </div>
+
+                    <!-- История треков -->
                     <h4>Track History</h4>
-                    <!-- Контейнер для истории треков -->
                     <div class="history-list">
                         <!-- Здесь будет появляться история треков после добавления -->
                     </div>
                 </div>
-        
+
                 <!-- Правая часть: Социальные сети, кнопка Play, On Air -->
                 <div class="right-section">
                     <!-- Социальные сети -->
@@ -59,13 +68,6 @@
                         </a>
                         <a href="https://stream.zeno.fm/pcbduafehg0uv.m3u"><img src="img/download.png" alt="m3u"></a>
                     </div>
-        
-                    <!-- Кнопка Play -->
-                    <button class="play-btn" id="play-btn">
-                        <div class="image-container">
-                            <img src="img/play.png" alt="Play" id="play-icon" />
-                        </div>
-                    </button>
                 </div>
             </div>
         </div>
