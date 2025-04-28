@@ -102,6 +102,7 @@ h4 {
     box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6);
     border-radius: 7%;
     object-fit: contain; /* чтобы изображение не обрезалось */
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 /* Кнопка воспроизведения */
@@ -253,12 +254,6 @@ h4 {
     transform: scale(1.1);
     filter: brightness(1.8) invert(1);
 }
-
-/* .telegram-text {
-    background-color: #222;
-    padding: 5px 10px;
-    border-radius: 5px;
-} */
 
 .social-icons img,
 .logo-overlay img {
@@ -419,4 +414,32 @@ h4 {
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: auto;
+}
+
+/* Исчезновение перед сменой изображения */
+.logo-overlay.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+}
+
+/* Появление новой картинки */
+.logo-overlay.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.marquee {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 12s linear infinite;
+}
+
+/* Ключевые кадры для анимации */
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }

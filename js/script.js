@@ -114,7 +114,7 @@ function fetchAlbumCover(artist, title) {
 
 // Функция для обновления обложки альбома
 function updateAlbumCover(artworkUrl, artist, title) {
-    albumCover.src = artworkUrl;
+    changeLogo(artworkUrl);
     updateTrackHistory(artist, title, artworkUrl); // Обновляем историю с обложкой
 }
 
@@ -136,8 +136,14 @@ eventSource.addEventListener('message', function(event) {
 
     // Добавляем задержку в 10 секунд перед обновлением информации о треке
     setTimeout(() => {
-        // Обновляем информацию о треке в интерфейсе
-        songInfo.textContent = `${artist} - ${title}`;
+        // Обновляем информацию о треке в интерфейсе с перезапуском анимации marquee
+        const marquee = songInfo.querySelector('.marquee');
+        if (marquee) {
+            marquee.classList.remove('marquee');
+            void marquee.offsetWidth; // Перезапуск рендеринга браузера
+            marquee.textContent = `${artist} - ${title}`;
+            marquee.classList.add('marquee');
+        }
 
         // Запрос обложки через API Deezer
         fetchAlbumCover(artist, title);
@@ -147,6 +153,24 @@ eventSource.addEventListener('message', function(event) {
 
     }, 10000); // Задержка в 10 секунд
 });
+
+function changeLogo(newSrc) {
+    const logo = document.querySelector('.logo-overlay');
+
+    if (!logo) return;
+
+    logo.classList.add('fade-out');
+
+    setTimeout(() => {
+        logo.src = newSrc;
+        logo.classList.remove('fade-out');
+        logo.classList.add('fade-in');
+
+        setTimeout(() => {
+            logo.classList.remove('fade-in');
+        }, 500); // убрать fade-in через 0.5 сек
+    }, 300); // ждать 0.3 сек перед сменой src
+}
 
 eventSource.addEventListener('ping', function() {
     console.log('Ping received');
