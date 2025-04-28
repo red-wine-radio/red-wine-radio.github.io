@@ -58,13 +58,13 @@ h4 {
     position: relative;
     width: 100%;
     max-width: 350px;
-    height: 650px; /* Общая высота плеера */
+    height: 100vh; /* ← теперь на всю высоту окна */
     padding: 40px;
-    background-color: #D8E1EC;
-    /* border-radius: 15px; */
-    /* box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3); */
-    margin: 0px auto;
-    /* overflow: visible;  */
+    background-color: #2a2f3a;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .player-container h4 {
@@ -74,25 +74,12 @@ h4 {
 /* Контейнер для левой и правой части */
 .player-content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
+    flex-direction: column; /* ← Важно! Вертикально */
+    justify-content: flex-start;
+    align-items: center;
     height: 100%;
+    width: 100%;
     position: relative;
-}
-
-/* Левая часть */
-.left-section {
-    flex-grow: 1;
-    width: calc(100% - 120px);
-}
-
-.left-section h1 {
-    width: 100%; 
-    font-size: 23px;
-    font-weight: bold;
-    color: #333;
-    
 }
 
 /* Правая часть */
@@ -109,11 +96,12 @@ h4 {
 
 /* Логотип */
 .logo-overlay {
-    top: 0px;
-    width: 100%; /* Ширина логотипа */
+    flex-grow: 1; /* Логотип растягивается, занимает всё свободное место */
     height: auto;
-    box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6); /* Тень вокруг логотипа */
-    border-radius: 7%; /* Закругленные углы для логотипа */
+    max-width: 300px; /* убираем ограничение по ширине */
+    box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6);
+    border-radius: 7%;
+    object-fit: contain; /* чтобы изображение не обрезалось */
 }
 
 /* Кнопка воспроизведения */
@@ -287,7 +275,16 @@ h4 {
     filter: brightness(1.2);
 }
 
+/* Подпрыгивание при наведении */
+.play-btn:hover {
+    transform: scale(1.1); /* Чуть увеличивается с подпрыгивающей анимацией */
+}
 
+/* Быстрая "пружина" вниз при клике */
+.play-btn:active {
+    transform: scale(0.9); /* Сжатие при нажатии */
+    opacity: 0.8; /* Чуть ярче */
+}
 
 @media (max-width: 420px) {
     .player-container {
@@ -300,6 +297,8 @@ h4 {
 
     .history-info {
         font-size: 14px;
+        flex-grow: 1; 
+        text-align: left;
     }
 
     .track-info {
@@ -311,4 +310,113 @@ h4 {
     content: "";
     display: block;
 
+}
+/* Блок логотипа и иконок */
+.logo-and-icons {
+    display: flex;
+    justify-content: space-between; /* Логотип влево, иконки вправо */
+    align-items: center;
+    width: 100%;
+    margin-bottom: 00px;
+}
+
+/* Логотип */
+.logo-overlay {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-right: 5px;
+    box-shadow: 0px 10px 30px rgba(0, 4, 0, 0.6);
+    border-radius: 7%;
+}
+
+/* Иконки */
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-right: 20px; 
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(1.8) invert(1);
+}
+
+/* Название станции */
+.station-name {
+    text-align: left;
+    width: 100%;
+    margin-top: 0px;
+}
+
+.station-name h1 {
+    font-size: 23px;
+    color: #cccccc;
+}
+
+/* Блок текущего трека + кнопка */
+.current-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0px;
+}
+
+/* Информация о треке */
+#song-info {
+    flex-grow: 1;
+    font-size: 18px;
+    padding-right: 10px;
+    color: #cccccc;
+    white-space: normal;
+    overflow: hidden;
+    text-align: left;
+}
+
+/* Кнопка Play */
+.play-btn {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.image-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    filter: brightness(1.2);
+}
+
+/* Блок истории треков */
+.track-history {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.track-history h4 {
+    text-align: left;
+    font-size: large;
+    color: #cccccc;
+}
+
+.history-list {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
