@@ -1,3 +1,9 @@
+// Инициализация Telegram WebApp
+if (window.Telegram && window.Telegram.WebApp) {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+}
+
 // Инициализация аудио плеера
 const audio = document.getElementById('audio');
 const playButton = document.getElementById('play-btn');
