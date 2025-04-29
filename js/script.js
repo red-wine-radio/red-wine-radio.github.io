@@ -2,6 +2,7 @@
 if (window.Telegram && window.Telegram.WebApp) {
     const tg = window.Telegram.WebApp;
     tg.ready();
+    tg.setHeaderColor('#2a2f3a');
 }
 
 // Инициализация аудио плеера
